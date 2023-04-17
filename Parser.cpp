@@ -5,7 +5,6 @@
 
 #include<vector>
 #include<iostream>
-
 #include "Token.hpp"
 #include "Parser.hpp"
 #include "Statements.hpp"
@@ -57,7 +56,7 @@ AssignmentStatement *Parser::assignStatement() {
         die("Parser::assignStatement", "Expected an equal sign, instead got", assignOp);
 
     ExprNode *rightHandSideExpr = expr();
-    /* Step 1
+    /* STEP 1 HERE
     Token tok = tokenizer.getToken();
 
     if (!tok.isSemiColon())
@@ -132,4 +131,25 @@ ExprNode *Parser::primary() {
     die("Parser::primary", "Unexpected token", tok);
 
     return nullptr;  // Will not reach this statement!
+}
+
+ExprNode *Parser::relationalExpr() {
+    // This function parses the grammar rules:
+    // <relational-expr> -> <expr> <rel_op> <expr>
+    // <rel_op> -> < | <= | > | >= | == | !=
+    // However, it makes the <rel_op> left associative.
+
+    ExprNode *left = expr();
+    Token tok = tokenizer.getToken();
+    while (tok.isLessThanOperator() || tok.isLessThanOrEqualOperator() ||
+           tok.isGreaterThanOperator() || tok.isGreaterThanOrEqualOperator() ||
+           tok.isEqualityOperator() || tok.isNotEqualOperator()) {
+        InfixExprNode *p = new InfixExprNode(tok);
+        p->left() = left;
+        p->right() = expr();
+        left = p;
+        tok = tokenizer.getToken();
+    }
+    tokenizer.ungetToken();
+    return static_cast<ExprNode *>(left);
 }

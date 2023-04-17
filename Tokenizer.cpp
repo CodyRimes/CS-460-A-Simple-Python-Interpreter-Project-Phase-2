@@ -82,7 +82,7 @@ Token Tokenizer::getToken() {
         token.symbol(c);
     else if (c == '<' || c == '>' || c == '=') {
         // need to tokenize the relational expressions
-        // Might not be correct part of step 2
+        // Might not be correct, part of STEP 2
         inStream.putback(c);
         token.getName();
     }
