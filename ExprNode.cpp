@@ -19,6 +19,7 @@ ExprNode *&InfixExprNode::left() { return _left; }
 ExprNode *&InfixExprNode::right() { return _right; }
 
 int InfixExprNode::evaluate(SymTab &symTab) {
+    // Evaluates an infix expression using a post-order traversal of the expression tree.
     int lValue = left()->evaluate(symTab);
     int rValue = right()->evaluate(symTab);
     if(debug)
@@ -31,6 +32,7 @@ int InfixExprNode::evaluate(SymTab &symTab) {
         return lValue * rValue;
     else if (token().isDivisionOperator())
         return lValue / rValue; // division by zero?
+    //Cody: Looks like Adam added this functionality to the expression node class function
     else if (token().isModuloOperator())
         return lValue % rValue;
     else if (token().isLessThanOperator())

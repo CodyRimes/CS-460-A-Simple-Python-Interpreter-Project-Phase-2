@@ -2,8 +2,9 @@
 // Created by Ali Kooshesh on 4/4/23.
 //
 
-#ifndef APYTHONINTERPRETER_ARITHEXPR_HPP
-#define APYTHONINTERPRETER_ARITHEXPR_HPP
+//Cody: I changed the #ifndef, #define, and #endif to more accurately represent this file
+#ifndef APYTHONINTERPRETER_EXPRNODE_HPP
+#define APYTHONINTERPRETER_EXPRNODE_HPP
 
 
 #include "Token.hpp"
@@ -70,4 +71,4 @@ public:
 };
 
 
-#endif //APYTHONINTERPRETER_ARITHEXPR_HPP
+#endif //APYTHONINTERPRETER_EXPRNODE_HPP

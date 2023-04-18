@@ -133,6 +133,7 @@ ExprNode *Parser::primary() {
     return nullptr;  // Will not reach this statement!
 }
 
+//Cody: Looks like Adam added this functionality
 ExprNode *Parser::relationalExpr() {
     // This function parses the grammar rules:
     // <relational-expr> -> <expr> <rel_op> <expr>

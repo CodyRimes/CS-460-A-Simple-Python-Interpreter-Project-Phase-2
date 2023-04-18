@@ -76,7 +76,7 @@ public:
     bool isLessThanOrEqualOperator() const {
         return _name == "<=";
     }
-    // STEP 5 HERE
+    // STEP 5 HERE, Cody: Adam added isKeyword
     bool isKeyword() const {
         return _name == "print" || _name == "for";
     }

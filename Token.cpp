@@ -27,6 +27,7 @@ void Token::print() const {
     else if( isGreaterThanOrEqualOperator()) std::cout << ">=";
     else if( isLessThanOperator()) std::cout << "<";
     else if( isLessThanOrEqualOperator()) std::cout << "<=";
+    //Cody: Adam added isKeyword
     else if( isKeyword()) std::cout << getName();
     else std::cout << "Uninitialized token.\n";
 }

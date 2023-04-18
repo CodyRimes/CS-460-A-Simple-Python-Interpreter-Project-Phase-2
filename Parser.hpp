@@ -27,6 +27,7 @@ public:
     ExprNode *expr();
     ExprNode *term();
     ExprNode *primary();
+    //Cody: Adam added relationalExpr()
     ExprNode *relationalExpr();
 
     std::string id();

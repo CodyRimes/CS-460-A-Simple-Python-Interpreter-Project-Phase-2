@@ -36,6 +36,7 @@ int Tokenizer::readInteger() {
     return intValue;
 }
 
+//Cody: Constructor?
 Tokenizer::Tokenizer(std::ifstream &stream): ungottenToken{false}, inStream{stream}, lastToken{} {}
 
 Token Tokenizer::getToken() {
@@ -80,7 +81,9 @@ Token Tokenizer::getToken() {
         token.symbol(c);
     else if( c == '(' || c == ')')
         token.symbol(c);
-    else if (c == '<' || c == '>' || c == '=') {
+    //Cody: If this indeed where we would handle the relational expressions character by character ( ex. ==, !=, >, >=, <, <= ) we will pick up  "<" and "=" character by character and put them back.
+    //Only "!" needs to be added here from what I can see
+    else if (c == '<' || c == '>' || c == '=' || c == '!') {
         // need to tokenize the relational expressions
         // Might not be correct, part of STEP 2
         inStream.putback(c);
