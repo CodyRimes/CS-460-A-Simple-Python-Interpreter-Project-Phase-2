@@ -27,6 +27,7 @@ public:
     ExprNode *expr();
     ExprNode *term();
     ExprNode *primary();
+    ExprNode *relationalExpr();
 
     std::string id();
 

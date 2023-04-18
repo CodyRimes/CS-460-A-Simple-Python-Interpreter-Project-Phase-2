@@ -19,22 +19,32 @@ ExprNode *&InfixExprNode::left() { return _left; }
 ExprNode *&InfixExprNode::right() { return _right; }
 
 int InfixExprNode::evaluate(SymTab &symTab) {
-    // Evaluates an infix expression using a post-order traversal of the expression tree.
     int lValue = left()->evaluate(symTab);
     int rValue = right()->evaluate(symTab);
     if(debug)
-        std::cout << "InfixExprNode::evaluate: " << lValue << " " <<
-            token().symbol() << " " << rValue << std::endl;
-    if( token().isAdditionOperator() )
+        std::cout << "InfixExprNode::evaluate: " << lValue << " " << token().symbol() << " " << rValue << std::endl;
+    if (token().isAdditionOperator())
         return lValue + rValue;
-    else if(token().isSubtractionOperator())
+    else if (token().isSubtractionOperator())
         return lValue - rValue;
-    else if(token().isMultiplicationOperator())
+    else if (token().isMultiplicationOperator())
         return lValue * rValue;
-    else if(token().isDivisionOperator())
+    else if (token().isDivisionOperator())
         return lValue / rValue; // division by zero?
-    else if( token().isModuloOperator() )
+    else if (token().isModuloOperator())
         return lValue % rValue;
+    else if (token().isLessThanOperator())
+        return lValue < rValue;
+    else if (token().isLessThanOrEqualOperator())
+        return lValue <= rValue;
+    else if (token().isGreaterThanOperator())
+        return lValue > rValue;
+    else if (token().isGreaterThanOrEqualOperator())
+        return lValue >= rValue;
+    else if (token().isEqualityOperator())
+        return lValue == rValue;
+    else if (token().isNotEqualOperator())
+        return lValue != rValue;
     else {
         std::cout << "InfixExprNode::evaluate: don't know how to evaluate this operator\n";
         token().print();

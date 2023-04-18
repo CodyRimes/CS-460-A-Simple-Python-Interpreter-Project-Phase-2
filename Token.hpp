@@ -48,7 +48,7 @@ public:
         _wholeNumber = n;
         isWholeNumber() = true;
     }
-
+    // STEP 2
     bool isRelationalOperator() const {
         return isLessThanOperator() ||
         isLessThanOrEqualOperator() ||
@@ -75,6 +75,10 @@ public:
     }
     bool isLessThanOrEqualOperator() const {
         return _name == "<=";
+    }
+    // STEP 5 HERE
+    bool isKeyword() const {
+        return _name == "print" || _name == "for";
     }
 
 

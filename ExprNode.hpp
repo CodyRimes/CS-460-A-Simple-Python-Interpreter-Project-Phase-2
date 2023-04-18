@@ -15,6 +15,7 @@
 // ExprNode serves as the base class (super class) for arithmetic expression.
 // It forces the derived classes (subclasses) to implement two functions, print and
 // evaluate.
+// STEP 3 RENAME ArithExpr to ExprNode
 
 class ExprNode {
 public:
