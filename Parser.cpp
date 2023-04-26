@@ -32,10 +32,31 @@ Statements *Parser::statements() {
 
     Statements *stmts = new Statements();
     Token tok = tokenizer.getToken();
-    while (tok.isName()) {
+    while (tok.isName() || tok.isKeyword() || tok.eol()) {
         tokenizer.ungetToken();
-        AssignmentStatement *assignStmt = assignStatement();
-        stmts->addStatement(assignStmt);
+        if (tok.isName())
+        {
+            AssignmentStatement *assignStmt = assignStatement();
+            stmts->addStatement(assignStmt);
+        }
+        if (tok.isKeyword())
+        {
+            if (tok.getName() == "for")
+            {
+                ForStatement *forstatement = ForStatement();
+                stmts->addStatement(forstatement);
+            }
+            if (tok.getName() == "print")
+            {
+                PrintStatement *printstatement = PrintStatement();
+                stmts->addStatement(printstatement);
+            }
+        }
+        if (tok.eol())
+        {
+
+        }
+
         tok = tokenizer.getToken();
     }
     tokenizer.ungetToken();
@@ -56,7 +77,7 @@ AssignmentStatement *Parser::assignStatement() {
         die("Parser::assignStatement", "Expected an equal sign, instead got", assignOp);
 
     ExprNode *rightHandSideExpr = expr();
-    /* STEP 1 HERE
+    /* STEP 1 HERE. We no longer need to process semi-colons (as we are parsing python code) so we have commented this section of code out
     Token tok = tokenizer.getToken();
 
     if (!tok.isSemiColon())
@@ -75,7 +96,7 @@ ExprNode *Parser::expr() {
 
     ExprNode *left = term();
     Token tok = tokenizer.getToken();
-    while (tok.isAdditionOperator() || tok.isSubtractionOperator()) {
+    while (tok.isAdditionOperator() || tok.isSubtractionOperator() || tok.isEqualityOperator() || tok.isNotEqualOperator()){
         InfixExprNode *p = new InfixExprNode(tok);
         p->left() = left;
         p->right() = term();
@@ -97,7 +118,7 @@ ExprNode *Parser::term() {
     ExprNode *left = primary();
     Token tok = tokenizer.getToken();
 
-    while (tok.isMultiplicationOperator() || tok.isDivisionOperator() || tok.isModuloOperator()) {
+    while (tok.isMultiplicationOperator() || tok.isDivisionOperator() || tok.isModuloOperator() || tok.isLessThanOrEqualToOperator() || tok.isLessThanOperator() || tok.isGreaterThanOrEqualToOperator() || tok.isGreaterThanOperator()) {
         InfixExprNode *p = new InfixExprNode(tok);
         p->left() = left;
         p->right() = primary();
@@ -142,8 +163,8 @@ ExprNode *Parser::relationalExpr() {
 
     ExprNode *left = expr();
     Token tok = tokenizer.getToken();
-    while (tok.isLessThanOperator() || tok.isLessThanOrEqualOperator() ||
-           tok.isGreaterThanOperator() || tok.isGreaterThanOrEqualOperator() ||
+    while (tok.isLessThanOperator() || tok.isLessThanOrEqualToOperator()||
+           tok.isGreaterThanOperator() || tok.isGreaterThanOrEqualToOperator() ||
            tok.isEqualityOperator() || tok.isNotEqualOperator()) {
         InfixExprNode *p = new InfixExprNode(tok);
         p->left() = left;

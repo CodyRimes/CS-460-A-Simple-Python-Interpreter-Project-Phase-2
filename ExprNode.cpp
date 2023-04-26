@@ -37,11 +37,11 @@ int InfixExprNode::evaluate(SymTab &symTab) {
         return lValue % rValue;
     else if (token().isLessThanOperator())
         return lValue < rValue;
-    else if (token().isLessThanOrEqualOperator())
+    else if (token().isLessThanOrEqualToOperator())
         return lValue <= rValue;
     else if (token().isGreaterThanOperator())
         return lValue > rValue;
-    else if (token().isGreaterThanOrEqualOperator())
+    else if (token().isGreaterThanOrEqualToOperator())
         return lValue >= rValue;
     else if (token().isEqualityOperator())
         return lValue == rValue;
