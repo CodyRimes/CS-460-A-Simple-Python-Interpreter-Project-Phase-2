@@ -32,9 +32,9 @@ int InfixExprNode::evaluate(SymTab &symTab) {
         return lValue * rValue;
     else if (token().isDivisionOperator())
         return lValue / rValue; // division by zero?
-    //Cody: Looks like Adam added this functionality to the expression node class function
     else if (token().isModuloOperator())
         return lValue % rValue;
+    //Cody: Looks like Adam added this functionality to the expression node class function
     else if (token().isLessThanOperator())
         return lValue < rValue;
     else if (token().isLessThanOrEqualToOperator())
@@ -43,7 +43,7 @@ int InfixExprNode::evaluate(SymTab &symTab) {
         return lValue > rValue;
     else if (token().isGreaterThanOrEqualToOperator())
         return lValue >= rValue;
-    else if (token().isEqualityOperator())
+    else if (token().isEqualOperator())
         return lValue == rValue;
     else if (token().isNotEqualOperator())
         return lValue != rValue;

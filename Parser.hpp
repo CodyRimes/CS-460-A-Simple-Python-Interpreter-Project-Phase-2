@@ -28,7 +28,10 @@ public:
     ExprNode *term();
     ExprNode *primary();
     //Cody: Adam added relationalExpr()
-    ExprNode *relationalExpr();
+    //ExprNode *relationalExpr();
+    //STEP 4 HERE APRIL 26th 2023: Cody added code for relational expressions and relational terms in accordance with the grammar rules
+    ExprNode *relationalExpression();
+    ExprNode *relationalTerm();
 
     std::string id();
 

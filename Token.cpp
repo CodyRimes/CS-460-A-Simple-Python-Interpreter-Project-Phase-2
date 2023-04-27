@@ -21,7 +21,7 @@ void Token::print() const {
     else if( isDivisionOperator() )  std::cout << " / " ;
     else if( isName() ) std::cout << getName();
     else if( isWholeNumber() ) std::cout << getWholeNumber();
-    else if( isEqualityOperator() ) std:: cout << " ==";
+    else if( isEqualOperator() ) std:: cout << " ==";
     else if( isNotEqualOperator() ) std:: cout << "!=";
     else if( isGreaterThanOperator() ) std::cout << ">";
     else if( isGreaterThanOrEqualToOperator() ) std::cout << ">=";

@@ -38,7 +38,7 @@ public:
     //Cody: Adding tokens that identify when we see greater than or equal ">=" to or less than or equal to "<=" signs. NOTE: I DO NOT THINK THIS WORKS SINCE _symbol IS A CHAR DATATYPE
     bool isGreaterThanOrEqualToOperator() const   { return _stringforrationaloperator == ">=";}
     bool isLessThanOrEqualToOperator() const      { return _stringforrationaloperator == "<=";}
-    bool isEqualityOperator() const               { return _stringforrationaloperator == "==";}
+    bool isEqualOperator() const               { return _stringforrationaloperator == "==";}
 
     bool isArithmeticOperator() const {
         return isMultiplicationOperator() ||
@@ -68,7 +68,7 @@ public:
         isLessThanOrEqualToOperator() ||
         isGreaterThanOperator() ||
         isGreaterThanOrEqualToOperator() ||
-        isEqualityOperator() ||
+        isEqualOperator() ||
         isNotEqualOperator();
     }
 
