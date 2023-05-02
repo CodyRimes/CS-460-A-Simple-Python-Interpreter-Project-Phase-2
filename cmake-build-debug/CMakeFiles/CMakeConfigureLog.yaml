@@ -39,7 +39,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
       
       The C compiler identification is MSVC, found in:
-        C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/3.26.3/CompilerIdC/CMakeCCompilerId.exe
+        C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/3.26.3/CompilerIdC/CMakeCCompilerId.exe
       
   -
     kind: "message-v1"
@@ -51,7 +51,7 @@ events:
     message: |
       Detecting C compiler /showIncludes prefix:
         main.c
-        Note: including file: C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
+        Note: including file: C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
@@ -85,7 +85,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/3.26.3/CompilerIdCXX/CMakeCXXCompilerId.exe
+        C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/3.26.3/CompilerIdCXX/CMakeCXXCompilerId.exe
       
   -
     kind: "message-v1"
@@ -97,7 +97,7 @@ events:
     message: |
       Detecting CXX compiler /showIncludes prefix:
         main.c
-        Note: including file: C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
+        Note: including file: C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
@@ -109,8 +109,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iqd0t9"
-      binary: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iqd0t9"
+      source: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e8g9lj"
+      binary: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e8g9lj"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -119,27 +119,27 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iqd0t9
+        Change Dir: C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e8g9lj
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_90517\\fast && 	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_90517.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_90517.dir\\build
-        Building C object CMakeFiles/cmTC_90517.dir/CMakeCCompilerABI.c.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_90517.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-iqd0t9" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\cl.exe @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmA696.tmp
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_2e16b\\fast && 	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_2e16b.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_2e16b.dir\\build
+        Building C object CMakeFiles/cmTC_2e16b.dir/CMakeCCompilerABI.c.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_2e16b.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-e8g9lj" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\cl.exe @C:\\Users\\Cody\\AppData\\Local\\Temp\\nm9E21.tmp
         CMakeCCompilerABI.c
-        Linking C executable cmTC_90517.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_90517.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_90517.dir\\objects1.rsp @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmA83D.tmp
+        Linking C executable cmTC_2e16b.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_2e16b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_2e16b.dir\\objects1.rsp @C:\\Users\\Cody\\AppData\\Local\\Temp\\nm9EDE.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_90517.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_90517.dir/embed.manifest
+        Create CMakeFiles\\cmTC_2e16b.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_2e16b.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_90517.dir/manifest.res CMakeFiles\\cmTC_90517.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_2e16b.dir/manifest.res CMakeFiles\\cmTC_2e16b.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_90517.dir\\objects1.rsp /out:cmTC_90517.exe /implib:cmTC_90517.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-iqd0t9\\cmTC_90517.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_90517.dir/intermediate.manifest CMakeFiles\\cmTC_90517.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_2e16b.dir\\objects1.rsp /out:cmTC_2e16b.exe /implib:cmTC_2e16b.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-e8g9lj\\cmTC_2e16b.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_2e16b.dir/intermediate.manifest CMakeFiles\\cmTC_2e16b.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_90517.dir/intermediate.manifest /out:CMakeFiles\\cmTC_90517.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_2e16b.dir/intermediate.manifest /out:CMakeFiles\\cmTC_2e16b.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_90517.dir/manifest.res CMakeFiles\\cmTC_90517.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_2e16b.dir/manifest.res CMakeFiles\\cmTC_2e16b.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_90517.dir\\objects1.rsp /out:cmTC_90517.exe /implib:cmTC_90517.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-iqd0t9\\cmTC_90517.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_90517.dir/intermediate.manifest CMakeFiles\\cmTC_90517.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_2e16b.dir\\objects1.rsp /out:cmTC_2e16b.exe /implib:cmTC_2e16b.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-e8g9lj\\cmTC_2e16b.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_2e16b.dir/intermediate.manifest CMakeFiles\\cmTC_2e16b.dir/manifest.res
         
       exitCode: 0
   -
@@ -151,8 +151,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qe9yml"
-      binary: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qe9yml"
+      source: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jnx0wg"
+      binary: "C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jnx0wg"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -161,27 +161,27 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-qe9yml
+        Change Dir: C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-jnx0wg
         
-        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_f38fa\\fast && 	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_f38fa.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_f38fa.dir\\build
-        Building CXX object CMakeFiles/cmTC_f38fa.dir/CMakeCXXCompilerABI.cpp.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_f38fa.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qe9yml" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\cl.exe @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmAC34.tmp
+        Run Build Command(s):C:/Program Files/CMake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_da9c8\\fast && 	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_da9c8.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_da9c8.dir\\build
+        Building CXX object CMakeFiles/cmTC_da9c8.dir/CMakeCXXCompilerABI.cpp.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_da9c8.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jnx0wg" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\cl.exe @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmA2C5.tmp
         CMakeCXXCompilerABI.cpp
-        Linking CXX executable cmTC_f38fa.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_f38fa.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_f38fa.dir\\objects1.rsp @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmAD10.tmp
+        Linking CXX executable cmTC_da9c8.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_da9c8.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_da9c8.dir\\objects1.rsp @C:\\Users\\Cody\\AppData\\Local\\Temp\\nmA381.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_f38fa.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_f38fa.dir/embed.manifest
+        Create CMakeFiles\\cmTC_da9c8.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_da9c8.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_f38fa.dir/manifest.res CMakeFiles\\cmTC_f38fa.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_da9c8.dir/manifest.res CMakeFiles\\cmTC_da9c8.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_f38fa.dir\\objects1.rsp /out:cmTC_f38fa.exe /implib:cmTC_f38fa.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qe9yml\\cmTC_f38fa.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_f38fa.dir/intermediate.manifest CMakeFiles\\cmTC_f38fa.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_da9c8.dir\\objects1.rsp /out:cmTC_da9c8.exe /implib:cmTC_da9c8.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jnx0wg\\cmTC_da9c8.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_da9c8.dir/intermediate.manifest CMakeFiles\\cmTC_da9c8.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_f38fa.dir/intermediate.manifest /out:CMakeFiles\\cmTC_f38fa.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_da9c8.dir/intermediate.manifest /out:CMakeFiles\\cmTC_da9c8.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_f38fa.dir/manifest.res CMakeFiles\\cmTC_f38fa.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100190~1.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_da9c8.dir/manifest.res CMakeFiles\\cmTC_da9c8.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_f38fa.dir\\objects1.rsp /out:cmTC_f38fa.exe /implib:cmTC_f38fa.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-qe9yml\\cmTC_f38fa.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_f38fa.dir/intermediate.manifest CMakeFiles\\cmTC_f38fa.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1428~1.293\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_da9c8.dir\\objects1.rsp /out:cmTC_da9c8.exe /implib:cmTC_da9c8.lib /pdb:C:\\Users\\Cody\\Desktop\\Code Repositories From GitHub\\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-jnx0wg\\cmTC_da9c8.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_da9c8.dir/intermediate.manifest CMakeFiles\\cmTC_da9c8.dir/manifest.res
         
       exitCode: 0
 ...

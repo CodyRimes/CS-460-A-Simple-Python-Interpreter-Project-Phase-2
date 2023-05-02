@@ -42,10 +42,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-"
+CMAKE_SOURCE_DIR = "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles\APythonInterpreter.dir\depend.make
@@ -59,143 +59,143 @@ include CMakeFiles\APythonInterpreter.dir\progress.make
 include CMakeFiles\APythonInterpreter.dir\flags.make
 
 CMakeFiles\APythonInterpreter.dir\main.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\main.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\main.cpp"
+CMakeFiles\APythonInterpreter.dir\main.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\main.cpp"
 CMakeFiles\APythonInterpreter.dir\main.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/APythonInterpreter.dir/main.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\main.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\main.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/APythonInterpreter.dir/main.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\main.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\main.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\main.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/main.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\main.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/main.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\main.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\main.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\main.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Token.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\Token.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Token.cpp"
+CMakeFiles\APythonInterpreter.dir\Token.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Token.cpp"
 CMakeFiles\APythonInterpreter.dir\Token.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/APythonInterpreter.dir/Token.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Token.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Token.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Token.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/APythonInterpreter.dir/Token.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Token.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Token.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Token.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Token.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/Token.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\Token.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Token.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Token.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Token.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/Token.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Token.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Token.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Token.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Token.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Tokenizer.cpp"
+CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Tokenizer.cpp"
 CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Tokenizer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Tokenizer.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Tokenizer.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Tokenizer.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Tokenizer.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Tokenizer.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Parser.cpp"
+CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Parser.cpp"
 CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/APythonInterpreter.dir/Parser.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Parser.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Parser.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/APythonInterpreter.dir/Parser.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Parser.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Parser.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Parser.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/Parser.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\Parser.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Parser.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Parser.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/Parser.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Parser.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Parser.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Parser.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Parser.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\ExprNode.cpp"
+CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\ExprNode.cpp"
 CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/APythonInterpreter.dir/ExprNode.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\ExprNode.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/APythonInterpreter.dir/ExprNode.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\ExprNode.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\ExprNode.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/ExprNode.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\ExprNode.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\ExprNode.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\ExprNode.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/ExprNode.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\ExprNode.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\ExprNode.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\ExprNode.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\ExprNode.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\SymTab.cpp"
+CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\SymTab.cpp"
 CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/APythonInterpreter.dir/SymTab.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\SymTab.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/APythonInterpreter.dir/SymTab.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\SymTab.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\SymTab.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/SymTab.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\SymTab.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\SymTab.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\SymTab.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\SymTab.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/SymTab.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\SymTab.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\SymTab.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\SymTab.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\SymTab.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj: CMakeFiles\APythonInterpreter.dir\flags.make
-CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Statements.cpp"
+CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj: "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Statements.cpp"
 CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj: CMakeFiles\APythonInterpreter.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/APythonInterpreter.dir/Statements.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Statements.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Statements.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/APythonInterpreter.dir/Statements.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj.d --working-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\APythonInterpreter.dir\Statements.cpp.obj /FdCMakeFiles\APythonInterpreter.dir\ /FS -c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Statements.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Statements.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/APythonInterpreter.dir/Statements.cpp.i"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe > CMakeFiles\APythonInterpreter.dir\Statements.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Statements.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Statements.cpp"
 <<
 
 CMakeFiles\APythonInterpreter.dir\Statements.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/APythonInterpreter.dir/Statements.cpp.s"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Statements.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\Statements.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\APythonInterpreter.dir\Statements.cpp.s /c "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\Statements.cpp"
 <<
 
 # Object files for target APythonInterpreter
@@ -220,9 +220,9 @@ APythonInterpreter.exe: CMakeFiles\APythonInterpreter.dir\SymTab.cpp.obj
 APythonInterpreter.exe: CMakeFiles\APythonInterpreter.dir\Statements.cpp.obj
 APythonInterpreter.exe: CMakeFiles\APythonInterpreter.dir\build.make
 APythonInterpreter.exe: CMakeFiles\APythonInterpreter.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable APythonInterpreter.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable APythonInterpreter.exe"
 	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\APythonInterpreter.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\APythonInterpreter.dir\objects1.rsp @<<
- /out:APythonInterpreter.exe /implib:APythonInterpreter.lib /pdb:"C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\APythonInterpreter.pdb" /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+ /out:APythonInterpreter.exe /implib:APythonInterpreter.lib /pdb:"C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\APythonInterpreter.pdb" /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -234,6 +234,6 @@ CMakeFiles\APythonInterpreter.dir\clean:
 .PHONY : CMakeFiles\APythonInterpreter.dir\clean
 
 CMakeFiles\APythonInterpreter.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\CMakeFiles\APythonInterpreter.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug" "C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\CMakeFiles\APythonInterpreter.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles\APythonInterpreter.dir\depend
 

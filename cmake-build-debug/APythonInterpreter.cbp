@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="APythonInterpreter">
-				<Option output="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/APythonInterpreter.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug"/>
+				<Option output="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/APythonInterpreter.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
@@ -34,15 +34,15 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 APythonInterpreter"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 APythonInterpreter"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="APythonInterpreter/fast">
-				<Option output="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug/APythonInterpreter.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug"/>
+				<Option output="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug/APythonInterpreter.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
@@ -57,73 +57,73 @@
 					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 APythonInterpreter/fast"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 APythonInterpreter/fast"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;C:\Users\Cody\Desktop\Code Repositories From GitHub\CS-460-A-Simple-Python-Interpreter-Project-Phase-2\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/ExprNode.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/ExprNode.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/ExprNode.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/ExprNode.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Parser.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Parser.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Parser.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Parser.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Statements.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Statements.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Statements.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Statements.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/SymTab.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/SymTab.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/SymTab.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/SymTab.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Token.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Token.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Token.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Token.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Tokenizer.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Tokenizer.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/Tokenizer.hpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Tokenizer.hpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/main.cpp">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/main.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>
-		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-/CMakeLists.txt">
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
