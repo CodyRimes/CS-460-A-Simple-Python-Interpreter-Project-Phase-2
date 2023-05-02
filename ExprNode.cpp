@@ -5,6 +5,7 @@
 
 #include<iostream>
 #include "ExprNode.hpp"
+//ExprNode is a base class that we literally never use directly. We only use ExprNode pointers so that we can employ polymorphism to have code which works on all ExprNode subclasses and dynamically behaves according to subclass traits at runtime. We are always using the evaluate method of subclasses because every ExprNode subclass must define their own evaluate method (because it is declared a virtual method in ExprNode). If we aren't evaluating an atomic value (a variable, a literal number, a literal string, etc.) then we are using the InfixExprNode evaluate method.
 // STEP 3 RENAME ArithExpr to ExprNode
 // ExprNode
 ExprNode::ExprNode(Token token): _token{token} {}
@@ -34,7 +35,7 @@ int InfixExprNode::evaluate(SymTab &symTab) {
         return lValue / rValue; // division by zero?
     else if (token().isModuloOperator())
         return lValue % rValue;
-    //Cody: Looks like Adam added this functionality to the expression node class function
+    //Cody: Looks like Adam completed part of Step 4 here and added this functionality to the expression node class function
     else if (token().isLessThanOperator())
         return lValue < rValue;
     else if (token().isLessThanOrEqualToOperator())

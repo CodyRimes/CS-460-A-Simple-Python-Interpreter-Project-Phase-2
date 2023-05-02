@@ -24,6 +24,10 @@ public:
 
     AssignmentStatement *assignStatement();
 
+    ForStatement *forStatement();
+
+    PrintStatement *printStatement();
+
     ExprNode *expr();
     ExprNode *term();
     ExprNode *primary();

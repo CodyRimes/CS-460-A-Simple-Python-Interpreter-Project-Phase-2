@@ -22,6 +22,9 @@ public:
     bool isOpenParen() const  { return _symbol == '('; }
     bool isCloseParen() const { return _symbol == ')'; }
 
+    bool isOpeningCurlyBrace() const { return _symbol == '{' ;}
+    bool isClosingCurlyBrace() const { return _symbol == '}' ;}
+
     void symbol(char c) { _symbol = c; }
     char symbol() { return _symbol; }
 
@@ -32,7 +35,7 @@ public:
     bool isSubtractionOperator() const    { return _symbol == '-'; }
     bool isModuloOperator() const         { return _symbol == '%'; }
     bool isDivisionOperator() const       { return _symbol == '/'; }
-    bool isNotEqualOperator() const       { return _symbol == '!';}
+    bool isNotEqualOperator() const       { return _stringforrationaloperator == "!=";}
     bool isGreaterThanOperator() const    { return _symbol == '>';}
     bool isLessThanOperator() const       { return _symbol == '<'; }
     //Cody: Adding tokens that identify when we see greater than or equal ">=" to or less than or equal to "<=" signs. NOTE: I DO NOT THINK THIS WORKS SINCE _symbol IS A CHAR DATATYPE

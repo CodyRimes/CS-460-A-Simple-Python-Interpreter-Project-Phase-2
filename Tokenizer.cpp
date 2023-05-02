@@ -41,8 +41,11 @@ Tokenizer::Tokenizer(std::ifstream &stream): ungottenToken{false}, inStream{stre
 
 Token Tokenizer::getToken() {
 
+    //If ungottenToken's value is set to true, the if block runs
     if(ungottenToken) {
+        //Set the ungottenToken member value back to false
         ungottenToken = false;
+        //return the lastToken stored
         return lastToken;
     }
 
@@ -52,7 +55,7 @@ Token Tokenizer::getToken() {
         ;
     */
 
-    while( inStream.get(c) && isspace(c) )  // Skip spaces including the new-line chars.
+    while( inStream.get(c) && isspace(c) && c!='\n')  // Skip spaces including the new-line chars.
         ;
 
     if(inStream.bad()) {
@@ -114,7 +117,7 @@ Token Tokenizer::getToken() {
         token.symbol(c);
     else if( c == ';' )
         token.symbol(c);
-    else if( c == '(' || c == ')')
+    else if( c == '(' || c == ')' || c == '{' || c == '}')
         token.symbol(c);
     //STEP 2 HERE CONTINUED:
     //Cody: If this indeed where we would handle the relational expressions character by character ( ex. ==, !=, >, >=, <, <= ) we will pick up  "<" and "=" character by character and put them back.

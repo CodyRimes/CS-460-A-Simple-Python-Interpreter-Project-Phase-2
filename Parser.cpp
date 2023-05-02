@@ -26,36 +26,64 @@ Statements *Parser::statements() {
 
     // This function parses the grammar rules:
 
+    //KOOSHESH:
     // <statement> -> <assignStatement> <statement>
     // <statement> -> Epsilon
 
+    //CODY APRIL 27th 2023: THIS CODE SHOULD NOW PARSE THE GRAMMAR RULES:
+    //<statements> - <statement> {<statement>}   <--- note how braces {} denotes 0 or more statements following the first statement
 
+    //A single statement itself can be of 3 different types, a for statement, an assignment statement, or a print statement. The grammar rules are as follows:
+    //<statement> -> <for-statement> | <assignment-statement> | <print-statement>
+
+
+    //Create an instance of statements
+    //This will at LEAST hold one statement, if not more as we parse and identify what we have
     Statements *stmts = new Statements();
+    //Get a token
     Token tok = tokenizer.getToken();
-    while (tok.isName() || tok.isKeyword() || tok.eol()) {
-        tokenizer.ungetToken();
-        if (tok.isName())
+    //if our token is a name (a variable/identifier), or a keyword (which would be "for" or "print"), or an End Of Line marker enter the while loop
+    while (tok.isName() || tok.isKeyword() || tok.eol())
+    {
+        //un-get the token so we can use this same token later the next time we call .getToken() in our code
+        if (!tok.eol())
         {
-            AssignmentStatement *assignStmt = assignStatement();
-            stmts->addStatement(assignStmt);
+            tokenizer.ungetToken();
         }
+        //If we have a name of a variable we know we will expect an assignment statement.
+        if (tok.isName() && !tok.isKeyword())
+        {
+            //Create an AssignmentStatement type pointer and point it to the returned value of hte assignStatement() function call
+            //Lets call it assignStmt
+            AssignmentStatement *assignStmt = assignStatement();
+            //Add this assignment-statement to our vector of statements held by the Statements class
+            stmts->addStatement(assignStmt);
+
+            //HOW DO WE PROCESS STATEMENTS AFTER THIS ONE STATEMENTS? HANDLED IN ASSIGNSTATEMENT() FUNCTION?
+        }
+        //If we have a keyword, lets process the correct statement each keyword represents
         if (tok.isKeyword())
         {
+            //If we have a "for" keyword,
             if (tok.getName() == "for")
             {
-                ForStatement *forstatement = ForStatement();
+                //Lets make an instance of a for statement pointer that captures the returned result of our ForStatement() function
+                //Call it forstatement
+                ForStatement *forstatement = forStatement();
+                //Lets add this for-statement to our vector of statements held by the Statements class
                 stmts->addStatement(forstatement);
             }
+            //If we have a "print" keyword,
             if (tok.getName() == "print")
             {
-                PrintStatement *printstatement = PrintStatement();
+                //Lets make an instance of a print statement pointer that captures the returned result of our PrintStatement() function
+                //Call it  printstatement
+                PrintStatement *printstatement = printStatement();
+                //Lets add this print-statement to our vector of statements held by the Statements class
                 stmts->addStatement(printstatement);
             }
         }
-        if (tok.eol())
-        {
 
-        }
 
         tok = tokenizer.getToken();
     }
@@ -99,7 +127,110 @@ AssignmentStatement *Parser::assignStatement() {
     if (!tok.isSemiColon())
         die("Parser::assignStatement", "Expected a semicolon, instead got", tok);
     */
+    //Return a new AssignmentStatement, but first give this new AssignmentStatement the appropriate parameters using it's parameterized constructor
+    //Note how in the Statements.hpp/.cpp files we this assignment statement an evaluation function. This is what we will be using when we eventually return all of our statements back to the main.cpp via our parser::statements() function. See how it recursively goes back up the stack?
     return new AssignmentStatement(varName.getName(), rightHandSideRelationalExpression);
+}
+
+//CODY APRIL 29th 2023: STEP 7 HERE.
+//Adding a function to the parser that will handle seeing a for-statement
+//Also added functionality to the Statements class/.cpp/.hpp file to make a sub-class of statement called ForStatement
+ForStatement *Parser::forStatement()
+{
+    // Parses the following grammar rule
+    //
+    // <for-statement> -> "for" "(" <assignment-statement> ";" <relational-expression ";" <assignment-statement> ")" {<statements>}
+    //NOTE: remember {<statements>} denotes zero or more statements can be expected
+
+    //Our first expected token in a for-statement according to our grammar is a "for" keyword.
+    Token forKeyword = tokenizer.getToken();
+
+    //Lets check if that's what we get, if not, lets kill the program
+    if (!forKeyword.isKeyword() && !(forKeyword.getName() == "for"))
+        die("Parser::forStatement", "Expected an open parentheses \"(\" , instead got", forKeyword);
+
+    //Our second expected token in a for-statement according to our grammar is an opening parentheses
+    Token leftParentheses = tokenizer.getToken();
+    //Lets check if we indeed got the expected token, a opening parentheses
+    if (!leftParentheses.isOpenParen())
+        die("Parser::forStatement", "Expected an open parentheses \"(\" , instead got", leftParentheses);
+
+    //Next we would expect an assignment statement in our for statement conditional (think: for (i=0; i<array.length; i++))
+    //This would take care of the i=0 for our example for statement above
+    AssignmentStatement *firstAssignmentStatement = assignStatement();
+
+    //After our first assignment statement should come our first semi-colon. Lets pick up that token and analyze it
+    Token firstSemiColon = tokenizer.getToken();
+    //If our token we picked up isn't a semi colon we do not have a properly syntaxed for statement
+    if (!firstSemiColon.isSemiColon())
+        die("Parser::forStatement", "Expected a semi-colon \";\" , instead got", firstSemiColon);
+
+    //After our first semi-colon should be a relational expression, so lets assign something that will drill down and figure out what that expression is
+    //JOE IS THIS AN INFIX EXPRESSION? THIS SHOULD BE ASSIGNED TO RELATIONAL EXPRESSION CORRECT?
+    ExprNode* ourRelationalExpression = relationalExpression();
+
+    //After our relational expression should come another semi-colon to terminate it. Lets pick up another token and analyze it
+    Token secondSemiColon = tokenizer.getToken();
+
+    //If we do not capture a semi-colon at this point we have an ill-formatted for-statement and we should kill the program
+    if (!secondSemiColon.isSemiColon())
+        die("Parser::forStatement", "Expected a semi-colon \";\" , instead got", secondSemiColon);
+
+    //After the second semi-colon we expect another assignment statement
+    //Lets create an instance of an assignmentStatement pointer to capture what the assignmentStatement() function figures out
+    AssignmentStatement *secondAssignmentStatement = assignStatement();
+
+    //After the last assignment statement in our for loop's conditional, we expect a closing parentheses to close out the conditional
+    //Lets grab a token and analyze it
+    Token rightParentheses = tokenizer.getToken();
+    //Lets check if we indeed got the expected token, a closing parentheses
+    if (!rightParentheses.isCloseParen())
+        die("Parser::forStatement", "Expected a closing parentheses \")\" , instead got", rightParentheses);
+
+    Token openingCurlyBrace = tokenizer.getToken();
+
+    if (!openingCurlyBrace.isOpeningCurlyBrace())
+        die("Parser::forStatement", "Expected a closing parentheses \"{\" , instead got", rightParentheses);
+
+    //Next we will need to deal with the for statement's loop body. Here we can assign a Statements pointer to capture the return value of what the statements() function processes
+    Statements* forLoopBody = statements();
+
+    Token closingCurlyBrace = tokenizer.getToken();
+
+    if (!closingCurlyBrace.isClosingCurlyBrace())
+        die("Parser::forStatement", "Expected a closing parentheses \"}\" , instead got", rightParentheses);
+
+    return new ForStatement(firstAssignmentStatement, ourRelationalExpression, secondAssignmentStatement, forLoopBody);
+}
+
+//CODY APRIL 29th 2023: STEP 6 HERE
+//Added a function to the parser that will handle seeing a for-statement
+//Also added functionality to the Statements class/.cpp/.hpp file to make a sub-class of statement called PrintStatement
+PrintStatement *Parser::printStatement()
+{
+    // Parses the following grammar rule
+    //
+    // <print-statement> -> print <ID>
+
+    //Note how in our sample input for phase 1 all of our print statements are only printing out variables and their values
+    //These values are integers from the symbol table
+
+    //Our first token we get should be a print keyword, lets grab a token and analyze it
+    Token ourPrintKeyword = tokenizer.getToken();
+
+    //If the token we got and expected to be our print keyword is not, we need to kill the program and throw an error message to our user
+    if (!ourPrintKeyword.isKeyword() && !(ourPrintKeyword.getName() == "print"))
+        die("Parser::printStatement()", "Expected a \"print\" keyword here , instead got", ourPrintKeyword);
+
+    //Next we want to declare an expression node that will drill down and identify the term we want to print after the print keyword we've received
+    //We will want to start from the top even though in phase 1 we could assume it will be what the primary() function would solve for us, however this could give us some issues:
+    //It is better coding practice to let the program be as generic as possible (and thus will be more flexible for other use cases) and let the code solve the problem/do the work for us. Eventually it will drill down to primary and resolve the variable names and corresponding values when it reaches primary() down the call stack
+    //In conversation with Joe, there was a good explanation in that, "if you used primary() to drill down, you would be assuming that the user is exclusively passing you a literal number or a variable with no modification. This fails to account for other valid print expressions involving any operator, such as a + 1, 2 < 3, or a + b + c. You don't need to think to much about what you choose to drill down with in the parser: the answer is always to start from the top of your "drilling" methods." My response was, "So better to start from the top and be safer rather than sorry. I think I get it. It doesn't hurt to drill down rather thank skipping steps/checks which come with starting at the top". And he responded, " Otherwise you open yourself to missing text which is valid. Its necessary to check every condition to perform the fundamental function of the program"
+    ExprNode *variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
+
+    //Return a new printStatement instance who has all the correct parts since we have gotten through all of our parsing for a printStatement
+    return new PrintStatement(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
+
 }
 
 //STEP 4 HERE BY CODY APRIL 26th 2023: Adding a parser function that will take care of the grammar rule:
@@ -115,8 +246,8 @@ ExprNode *Parser::relationalExpression()
     Token relationalOperator = tokenizer.getToken();
 
     //If the token we get back from the .getToken() function is not an equal to "==" or not equal to "!=" relational operator, as we would expect in our grammar, kill the program and throw and error message back to our user
-    if (!relationalOperator.isEqualOperator() | !relationalOperator.isNotEqualOperator())
-        die("Parser::relationalExpression", "Expected an assignment operator \"==\" or a not equal to operator \"!=\" , instead got", relationalOperator);
+    //if (!relationalOperator.isEqualOperator() | !relationalOperator.isNotEqualOperator())
+        //die("Parser::relationalExpression", "Expected an assignment operator \"==\" or a not equal to operator \"!=\" , instead got", relationalOperator);
 
     //While our relational operator is indeed an equal or not equal to operator
     while (relationalOperator.isEqualOperator() || relationalOperator.isNotEqualOperator())
@@ -136,7 +267,7 @@ ExprNode *Parser::relationalExpression()
 
     //Set flag for ungetToken to tell .getToken() function that will use last gotten token we previously picked up (i.e. getToken() will return the last gotten token which is stored as a private variable in the tokenizer class)
     tokenizer.ungetToken();
-    //
+    
     return leftSideOfRelationalExpressionIsOurFirstRelationalTerm;
 }
 
@@ -157,8 +288,8 @@ ExprNode *Parser::relationalTerm()
     Token relationalOperator = tokenizer.getToken();
 
     //If the token we get back from the .getToken() function is not a ">", ">=", "<", or "<=" operator, as we would expect in our grammar, kill the program and throw and error message back to our user
-    if (!relationalOperator.isLessThanOperator() | !relationalOperator.isLessThanOrEqualToOperator() | !relationalOperator.isGreaterThanOperator() | !relationalOperator.isGreaterThanOrEqualToOperator())
-        die("Parser::relationalTerm", "Expected a less than operator \"<\" or a less than or equal to operator \"<=\", or a greater than or equal to operator \">=\", or a greater than operator \">\" instead got", relationalOperator);
+    //if (!relationalOperator.isLessThanOperator() | !relationalOperator.isLessThanOrEqualToOperator() | !relationalOperator.isGreaterThanOperator() | !relationalOperator.isGreaterThanOrEqualToOperator())
+        //die("Parser::relationalTerm", "Expected a less than operator \"<\" or a less than or equal to operator \"<=\", or a greater than or equal to operator \">=\", or a greater than operator \">\" instead got", relationalOperator);
 
     //While our relational operator is indeed a">", ">=", "<", or "<=" operator
     while (relationalOperator.isLessThanOperator() || relationalOperator.isLessThanOrEqualToOperator() || relationalOperator.isGreaterThanOperator() || relationalOperator.isLessThanOrEqualToOperator())
@@ -189,7 +320,7 @@ ExprNode *Parser::expr() {
     // <add_op> -> + | -
 
     // However, it makes the <add_op> left associative.
-
+    //ADD ADDITIONAL RELATIONAL OPERATORS HERE???
     ExprNode *left = term();
     Token tok = tokenizer.getToken();
     while (tok.isAdditionOperator() || tok.isSubtractionOperator() || tok.isEqualOperator() || tok.isNotEqualOperator()){
@@ -239,7 +370,7 @@ ExprNode *Parser::primary() {
     else if( tok.isName() )
         return new Variable(tok);
     else if (tok.isOpenParen()) {
-        ExprNode *p = expr();
+        ExprNode *p = relationalExpression();
         Token token = tokenizer.getToken();
         if (!token.isCloseParen())
             die("Parser::primary", "Expected close-parenthesis, instead got", token);
@@ -251,6 +382,7 @@ ExprNode *Parser::primary() {
 }
 
 //Cody: Looks like Adam added this functionality
+/*
 ExprNode *Parser::relationalExpr() {
     // This function parses the grammar rules:
     // <relational-expr> -> <expr> <rel_op> <expr>
@@ -271,3 +403,4 @@ ExprNode *Parser::relationalExpr() {
     tokenizer.ungetToken();
     return static_cast<ExprNode *>(left);
 }
+*/
