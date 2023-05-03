@@ -91,7 +91,62 @@ Statements *Parser::statements() {
     return stmts;
 }
 
-AssignmentStatement *Parser::assignStatement() {
+SimpleStatement* Parser::simpleStatement()
+{
+    // Parses the following grammar rule from phase 2's grammar rules
+    //
+    // <simple_statement> -> (print_statement | assignment_statement) NEWLINE
+
+
+    //Get a token from the tokenizer
+    Token genericNameToken = tokenizer.getToken();
+
+    //If our token is either a print_statement or an assignment_statement this if condition will run, as both return .isName() as true (remember .isKeyword() is for a specific case for the _name private member variable of a token so checking for that will be another if condition after this first if condition)
+    if (genericNameToken.isName())
+    {
+        //We know we at least have a name token if the above if condition passed and we are now inside the if block
+
+        //Now lets check if the name token we got is a keyword
+        if (genericNameToken.isKeyword())
+        {
+            //Now that we've entered this if block we know we have a name token that is at least a keyword. Let's double check that it is indeed matching the "print" keyword
+            if (genericNameToken.getName() == "print")
+            {
+                //Create a PrintStatement type pointer and set it equal to the return value that the parser function printStatement() gets for us
+                PrintStatement* printStatementWeveCapturedFromOurParser = printStatement();
+                //Now that we know we have a proper formatted/syntactically correct PrintStatement we now need to check if the next token is indeed an EOL token, which will is by grammar rule what terminates a <simple_statement>
+                Token expectedEndOfLineToken = tokenizer.getToken();
+
+                //Lets check if that token is indeed an end of line token. If it isn't, kill the program
+                if (expectedEndOfLineToken.eol() == false)
+                    die("Parser::simpleStatment()", "Expected an end of line token, instead got", expectedEndOfLineToken);
+
+                //Since we got past the if condition above checking for an end of line token, we can now return a properly formatted <simple_statement>
+                return new SimpleStatement(printStatementWeveCapturedFromOurParser);
+
+            }
+        }
+        else //We know we have an assignment statement since the if condition of genericNameToken.isName() has passed as true in the appropriate if block, but we did not enter the isKeyword() if condition block, thus we have an assignment statement we need to take care of
+        {
+            //Create an AssignmentStatement type pointer and set it equal to the return value that the parser function assignStatement() gets for us
+            AssignmentStatement* assignmentStatementWeveCapturedFromOurParser = assignStatement();
+            //Now that we know we have a proper formatted/syntactically correct AssignmentStatement we now need to check if the next token is indeed an EOL token, which will is by grammar rule what terminates a <simple_statement>
+            Token expectedEndOfLineToken = tokenizer.getToken();
+            //Lets check if that token is indeed an end of line token. If it isn't, kill the program
+            if (expectedEndOfLineToken.eol() == false)
+                die("Parser::simpleStatment()", "Expected an end of line token, instead got", expectedEndOfLineToken);
+
+            //Since we got past the if condition above checking for an end of line token, we can now return a properly formatted <simple_statement>
+            return new SimpleStatement(assignmentStatementWeveCapturedFromOurParser);
+
+
+        }
+    }
+
+}
+
+AssignmentStatement* Parser::assignStatement()
+{
     // Parses the following grammar rule
     //
     // <assign-stmtement> -> <id> = <expr>
@@ -118,7 +173,7 @@ AssignmentStatement *Parser::assignStatement() {
     // <assign-statement> -> <id> "=" <relational-expression> NOTE: "=" denotes a literal equal sign expected
     //ExprNode *rightHandSideExpr = expr();
     //The above code should now be replace with:
-    ExprNode *rightHandSideRelationalExpression = relationalExpression();
+    ExprNode* rightHandSideRelationalExpression = relationalExpression();
 
 
     /* STEP 1 HERE. We no longer need to process semi-colons (as we are parsing python code) so we have commented this section of code out
@@ -135,7 +190,7 @@ AssignmentStatement *Parser::assignStatement() {
 //CODY APRIL 29th 2023: STEP 7 HERE.
 //Adding a function to the parser that will handle seeing a for-statement
 //Also added functionality to the Statements class/.cpp/.hpp file to make a sub-class of statement called ForStatement
-ForStatement *Parser::forStatement()
+ForStatement* Parser::forStatement()
 {
     // Parses the following grammar rule
     //
@@ -157,7 +212,7 @@ ForStatement *Parser::forStatement()
 
     //Next we would expect an assignment statement in our for statement conditional (think: for (i=0; i<array.length; i++))
     //This would take care of the i=0 for our example for statement above
-    AssignmentStatement *firstAssignmentStatement = assignStatement();
+    AssignmentStatement* firstAssignmentStatement = assignStatement();
 
     //After our first assignment statement should come our first semi-colon. Lets pick up that token and analyze it
     Token firstSemiColon = tokenizer.getToken();
@@ -178,7 +233,7 @@ ForStatement *Parser::forStatement()
 
     //After the second semi-colon we expect another assignment statement
     //Lets create an instance of an assignmentStatement pointer to capture what the assignmentStatement() function figures out
-    AssignmentStatement *secondAssignmentStatement = assignStatement();
+    AssignmentStatement* secondAssignmentStatement = assignStatement();
 
     //After the last assignment statement in our for loop's conditional, we expect a closing parentheses to close out the conditional
     //Lets grab a token and analyze it
@@ -206,7 +261,7 @@ ForStatement *Parser::forStatement()
 //CODY APRIL 29th 2023: STEP 6 HERE
 //Added a function to the parser that will handle seeing a for-statement
 //Also added functionality to the Statements class/.cpp/.hpp file to make a sub-class of statement called PrintStatement
-PrintStatement *Parser::printStatement()
+PrintStatement* Parser::printStatement()
 {
     // Parses the following grammar rule
     //
@@ -226,7 +281,7 @@ PrintStatement *Parser::printStatement()
     //We will want to start from the top even though in phase 1 we could assume it will be what the primary() function would solve for us, however this could give us some issues:
     //It is better coding practice to let the program be as generic as possible (and thus will be more flexible for other use cases) and let the code solve the problem/do the work for us. Eventually it will drill down to primary and resolve the variable names and corresponding values when it reaches primary() down the call stack
     //In conversation with Joe, there was a good explanation in that, "if you used primary() to drill down, you would be assuming that the user is exclusively passing you a literal number or a variable with no modification. This fails to account for other valid print expressions involving any operator, such as a + 1, 2 < 3, or a + b + c. You don't need to think to much about what you choose to drill down with in the parser: the answer is always to start from the top of your "drilling" methods." My response was, "So better to start from the top and be safer rather than sorry. I think I get it. It doesn't hurt to drill down rather thank skipping steps/checks which come with starting at the top". And he responded, " Otherwise you open yourself to missing text which is valid. Its necessary to check every condition to perform the fundamental function of the program"
-    ExprNode *variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
+    ExprNode* variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
 
     //Return a new printStatement instance who has all the correct parts since we have gotten through all of our parsing for a printStatement
     return new PrintStatement(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
@@ -235,7 +290,7 @@ PrintStatement *Parser::printStatement()
 
 //STEP 4 HERE BY CODY APRIL 26th 2023: Adding a parser function that will take care of the grammar rule:
 //<rel-expr> -> <rel-term> {(==, !=) <rel-term>} in english that is: <relational-expression> -> <relational-term> {(==, !=) <relational-term>}
-ExprNode *Parser::relationalExpression()
+ExprNode* Parser::relationalExpression()
 {
     //Our first token expected for this grammar rule is a relational term, thus
     //I guess you can kind of think of this as a place holder, but in reality it is not
@@ -256,7 +311,7 @@ ExprNode *Parser::relationalExpression()
         //we handle those terms via our InfixExprNode sub-class described in ExprNode.cpp
         //Lets make an InfixExprNode that will parse the left and right values of an infix expression i.e. 2+3 (2 being left, 3 being right)
         //LOOK UP LEFT DERIVATION SYNTENTIAL FORM TO VISUALIZE THIS TREE THAT GETS CREATED
-        InfixExprNode *p = new InfixExprNode(relationalOperator);
+        InfixExprNode* p = new InfixExprNode(relationalOperator);
         p->left() = leftSideOfRelationalExpressionIsOurFirstRelationalTerm;
         p->right() = relationalTerm();
         leftSideOfRelationalExpressionIsOurFirstRelationalTerm = p;
@@ -273,7 +328,7 @@ ExprNode *Parser::relationalExpression()
 
 //STEP 4 HERE BY CODY APRIL 26th 2023:  Adding a parser function that will take care of the grammar rule:
 //<rel-term> -> <rel-primary> {(>, >=, <, <=) <rel-primary>} in english that is: <relational-term> -> <relational-primary> {(>, >=, <, <=) <relational-primary>}
-ExprNode *Parser::relationalTerm()
+ExprNode* Parser::relationalTerm()
 {
     //CODY APRIL 26th 2023: USE C++ EXPR() FUNCTION TO REPRESENT <REL-PRIMARY> GRAMMAR RULE FOR NOW
     //THIS MAY NEED TO BE FIXED LATER ON FOR A LATER PHASE OF THE PROJECT
@@ -282,7 +337,7 @@ ExprNode *Parser::relationalTerm()
     //Our first token expected for this grammar rule is a relational term, thus
     //I guess you can kind of think of this as a place holder, but in reality it is not
     //This variable holds the return value of a function that drills down and will eventually return the atomic values the grammar rules will eventually parse
-    ExprNode *leftSideOfRelationalTermIsOurFirstRelationalPrimary = expr();
+    ExprNode* leftSideOfRelationalTermIsOurFirstRelationalPrimary = expr();
 
     //Our second token which is expected for this grammar rule should be a ">", ">=", "<", or "<=" operator, thus
     Token relationalOperator = tokenizer.getToken();
@@ -298,7 +353,7 @@ ExprNode *Parser::relationalTerm()
         //we handle those primary's via our InfixExprNode sub-class described in ExprNode.cpp
         //Lets make an InfixExprNode that will parse the left and right values of an infix expression i.e. 2+3 (2 being left, 3 being right)
         //LOOK UP LEFT DERIVATION SYNTENTIAL FORM TO VISUALIZE THIS TREE THAT GETS CREATED
-        InfixExprNode *p = new InfixExprNode(relationalOperator);
+        InfixExprNode* p = new InfixExprNode(relationalOperator);
         p->left() = leftSideOfRelationalTermIsOurFirstRelationalPrimary;
         p->right() = expr();
         leftSideOfRelationalTermIsOurFirstRelationalPrimary = p;
@@ -313,7 +368,7 @@ ExprNode *Parser::relationalTerm()
     return leftSideOfRelationalTermIsOurFirstRelationalPrimary;
 }
 
-ExprNode *Parser::expr() {
+ExprNode* Parser::expr() {
     // This function parses the grammar rules:
 
     // <expr> -> <term> { <add_op> <term> }
@@ -321,10 +376,10 @@ ExprNode *Parser::expr() {
 
     // However, it makes the <add_op> left associative.
     //ADD ADDITIONAL RELATIONAL OPERATORS HERE???
-    ExprNode *left = term();
+    ExprNode* left = term();
     Token tok = tokenizer.getToken();
     while (tok.isAdditionOperator() || tok.isSubtractionOperator() || tok.isEqualOperator() || tok.isNotEqualOperator()){
-        InfixExprNode *p = new InfixExprNode(tok);
+        InfixExprNode* p = new InfixExprNode(tok);
         p->left() = left;
         p->right() = term();
         left = p;
@@ -335,18 +390,18 @@ ExprNode *Parser::expr() {
 }
 
 
-ExprNode *Parser::term() {
+ExprNode* Parser::term() {
     // This function parses the grammar rules:
 
     // <term> -> <primary> { <mult_op> <primary> }
     // <mult_op> -> * | / | %
 
     // However, the implementation makes the <mult-op> left associate.
-    ExprNode *left = primary();
+    ExprNode* left = primary();
     Token tok = tokenizer.getToken();
 
     while (tok.isMultiplicationOperator() || tok.isDivisionOperator() || tok.isModuloOperator() || tok.isLessThanOrEqualToOperator() || tok.isLessThanOperator() || tok.isGreaterThanOrEqualToOperator() || tok.isGreaterThanOperator()) {
-        InfixExprNode *p = new InfixExprNode(tok);
+        InfixExprNode* p = new InfixExprNode(tok);
         p->left() = left;
         p->right() = primary();
         left = p;
@@ -356,7 +411,7 @@ ExprNode *Parser::term() {
     return left;
 }
 
-ExprNode *Parser::primary() {
+ExprNode* Parser::primary() {
     // This function parses the grammar rules:
 
     // <primary> -> [0-9]+
@@ -370,7 +425,7 @@ ExprNode *Parser::primary() {
     else if( tok.isName() )
         return new Variable(tok);
     else if (tok.isOpenParen()) {
-        ExprNode *p = relationalExpression();
+        ExprNode* p = relationalExpression();
         Token token = tokenizer.getToken();
         if (!token.isCloseParen())
             die("Parser::primary", "Expected close-parenthesis, instead got", token);
@@ -382,6 +437,7 @@ ExprNode *Parser::primary() {
 }
 
 //Cody: Looks like Adam added this functionality
+//This code is no longer needed. Commented out - Cody May 2nd 2023
 /*
 ExprNode *Parser::relationalExpr() {
     // This function parses the grammar rules:

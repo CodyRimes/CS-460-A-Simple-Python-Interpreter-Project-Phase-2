@@ -43,6 +43,8 @@ private:
     std::vector<Statement *> _statements;
 };
 
+
+
 // AssignmentStatement represents the notion of an lValue having been assigned an rValue.
 // The rValue is an expression.
 
@@ -99,6 +101,29 @@ private:
 
     //May need below code for phase 2
     //std::vector<ExprNode*> _rhsExpressions;
+};
+
+//SimpleStatement class will hold all the parts of a correctly parsed print_statement or assignment_statement once the parser.cpp file is finished parsing one for us.
+class SimpleStatement : public Statement
+{
+public:
+    //Default constructor for a SimpleStatement
+    SimpleStatement();
+
+    //Parameterized constructors for a SimpleStatement (Parser.cpp will use this to set the private member variables of a syntactically correct
+    //Note how in our simple statement class we will only have one or the other when it comes to the SimpleStatement being made up of a AssignmentStatement or a PrintStatement, never both. Hence we will have an overloaded parameterized constructor the parser will use when it sees that the SimpleStatement is made up of one or the other.
+    SimpleStatement(AssignmentStatement* setPrivateAssignmentStatementVariableToThis);
+    SimpleStatement(PrintStatement* setPrivatePrintStatementVariableToThis);
+
+    virtual void evaluate(SymTab &symTab);
+    virtual void print();
+
+private:
+    //A simple statement is either made up of a print_statement or assignment_statement. Let's declare private member variables to hold these values
+    AssignmentStatement* _thisSimpleStatementsAssignmentStatement;
+    PrintStatement* _thisSimpleStatementsPrintStatement;
+    //A simple statement is terminated with a new line character. For now lets make sure we capture that to make sure we have a syntatically correct simple statement
+    //Token _endOfLineToken; commenting out as we may not need this
 };
 
 

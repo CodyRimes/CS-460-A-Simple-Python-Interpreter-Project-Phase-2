@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/Descriptor.hpp">
+			<Option target="APythonInterpreter"/>
+		</Unit>
 		<Unit filename="C:/Users/Cody/Desktop/Code Repositories From GitHub/CS-460-A-Simple-Python-Interpreter-Project-Phase-2/ExprNode.cpp">
 			<Option target="APythonInterpreter"/>
 		</Unit>

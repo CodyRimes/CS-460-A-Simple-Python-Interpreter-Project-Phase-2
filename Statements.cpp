@@ -135,6 +135,64 @@ void PrintStatement::evaluate(SymTab &symTab)
 
 }
 
+//AREA FOR SimpleStatement
+//Default constructor
+SimpleStatement::SimpleStatement()
+{
+    //Intializing private member variables to temporary initialized null values
+    AssignmentStatement* _thisSimpleStatementsAssignmentStatement = nullptr;
+    PrintStatement* _thisSimpleStatementsPrintStatement = nullptr;
+    //DOES THIS LINE INDEED CALL THE DEFAULT CONSTRUCTOR?
+    Token _endOfLineToken();
+}
+
+//Parameterized constructors
+SimpleStatement::SimpleStatement(AssignmentStatement *setPrivateAssignmentStatementVariableToThis, Token incomingEndOfLineToken)
+{
+    _thisSimpleStatementsAssignmentStatement = setPrivateAssignmentStatementVariableToThis;
+    _thisSimpleStatementsPrintStatement = nullptr;
+    _endOfLineToken = incomingEndOfLineToken;
+}
+
+SimpleStatement::SimpleStatement(PrintStatement *setPrivatePrintStatementVariableToThis, Token incomingEndOfLineToken)
+{
+    _thisSimpleStatementsAssignmentStatement = nullptr;
+    _thisSimpleStatementsPrintStatement = setPrivatePrintStatementVariableToThis;
+    _endOfLineToken = incomingEndOfLineToken;
+}
+
+void SimpleStatement::evaluate(SymTab &symTab)
+{
+    //if _thisSimpleStatementsAssignmentStatement is pointing to a null pointer, we know we have a SimpleStatement that holds a PrintStatement that we need to evaluate (as a simple_statement by grammar rule can only be one (assignment_statement) or the other(print_statement))
+    if (_thisSimpleStatementsAssignmentStatement == nullptr)
+    {
+        _thisSimpleStatementsPrintStatement->evaluate(symTab);
+    }
+    else //if _thisSimpleStatementsPrintStatement is pointing to a null pointer, we know we have a SimpleStatement that holds a AssignmentStatement that we need to evaluate (as a simple_statement by grammar rule can only be one (assignment_statement) or the other(print_statement))
+    {
+        _thisSimpleStatementsAssignmentStatement->evaluate(symTab);
+    }
+
+    //We do not need to evaluate an EOL token, so we are done here with evaluating our private member variables
+}
+
+void SimpleStatement::print()
+{
+    //if _thisSimpleStatementsAssignmentStatement is pointing to a null pointer, we know we have a SimpleStatement that holds a PrintStatement that we need to printing (as a simple_statement by grammar rule can only be one (assignment_statement) or the other(print_statement))
+    if (_thisSimpleStatementsAssignmentStatement == nullptr)
+    {
+        _thisSimpleStatementsPrintStatement->print();
+    }
+    else //if _thisSimpleStatementsPrintStatement is pointing to a null pointer, we know we have a SimpleStatement that holds a AssignmentStatement that we need to be printing (as a simple_statement by grammar rule can only be one (assignment_statement) or the other(print_statement))
+    {
+        _thisSimpleStatementsAssignmentStatement->print();
+    }
+
+    //We do not need to print an EOL token, so we are done here with evaluating our private member variables
+}
+
+
+
 //AREA FOR ForStatement
 //Default constructor
 ForStatement::ForStatement()
@@ -197,13 +255,20 @@ void ForStatement::print()
 //Remember our private members are of the AssignmentStatement, ExprNode and Statements class types
 void ForStatement::evaluate(SymTab &symTab)
 {
+    //Imagine an actual for loop statement
+    //for (int i = 0; i < array.length; i++)
+    //{
+    //   STATEMENTS IN BODY OF FOR LOOP TO EXECUTE/EVALUATE
+    //}
+
+    //If we follow the for loop format we first need to evaluate the first assignment statement
     //Use AssignmentStatement's evaluate function to evaluate the contents of our private member AssignmentStatement variable (It specifically updates the symbol table with value on the right hand side of the statement and ties it with the left hand side expression node)
     _initialAssignmentStatement->evaluate(symTab);
 
-    //While we have our conditional expression:
+    //Following the actual format of a for loop, we need to run the evaluations on the for loop body/execute the statements inside the body while the conditinal expression keeps coming back as true. When the conditional expression finally comes back as false, we will break out of the while loop, just like how we would inside a real for loop
+    //Thus while we have our conditional expression coming back as true:
     while (_conditionalExpressionInForLoop->evaluate(symTab))
     {
-
 
         //Use Statements class evaluate function to evaluate the contents of our private member Statements variable
         _bodyOfForLoop->evaluate(symTab);
