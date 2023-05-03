@@ -151,14 +151,14 @@ SimpleStatement::SimpleStatement(AssignmentStatement *setPrivateAssignmentStatem
 {
     _thisSimpleStatementsAssignmentStatement = setPrivateAssignmentStatementVariableToThis;
     _thisSimpleStatementsPrintStatement = nullptr;
-    _endOfLineToken = incomingEndOfLineToken;
+    //_endOfLineToken = incomingEndOfLineToken;
 }
 
 SimpleStatement::SimpleStatement(PrintStatement *setPrivatePrintStatementVariableToThis, Token incomingEndOfLineToken)
 {
     _thisSimpleStatementsAssignmentStatement = nullptr;
     _thisSimpleStatementsPrintStatement = setPrivatePrintStatementVariableToThis;
-    _endOfLineToken = incomingEndOfLineToken;
+    //_endOfLineToken = incomingEndOfLineToken;
 }
 
 void SimpleStatement::evaluate(SymTab &symTab)

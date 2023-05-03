@@ -104,6 +104,14 @@ private:
 };
 
 //SimpleStatement class will hold all the parts of a correctly parsed print_statement or assignment_statement once the parser.cpp file is finished parsing one for us.
+//ON MAY 3rd 2023 MADE THIS COMMIT MESSAGE:
+//"Without testing, I believe I have implemented code that handles the grammar rules necessary for <simple-statement> -> <print-stateme
+//nt> | <assignment-statement>. This entails a class called SimpleStatement which basically holds either an AssignmentStatement or a PrintStatement, and can print and evaluate either/or. I have also included a parser function that parses tokens to make sur
+//e they follow the correct syntax for a <simple-statement> within the parser.cpp file. I want to be very clear that I am making this commit at this time to provide context that after writing all this code I do believe there is a way to parse simple-statem
+//ents without the class or additional parser function. I believe had I worked on the statements() parser function in parser.cpp I could have done the parsing there and effectively still followed the grammar rule <simple-statemetn> -> <print-statement> | <
+//assignment-statement>, i.e. could have functionally followed the grammar rules with a lot less work. If testing fails I would recommend coming to this commit and branching off of it and implementing the above recommended solution (deleting the SimpleStat
+//ement class, and deleting the simpleStatement() parser function in parser.cpp and instead focusing on parsing a simple-statement within the statements() parser function). Committing now and pushing code up to remote repository.
+//BASICALLY THIS CODE MAY BE UNESSARY AND COULD HAVE FUNCTIONALLY PASSED THE GRAMMAR RULES BY MODIFYING THE statements() PARSER FUNCTION!!
 class SimpleStatement : public Statement
 {
 public:

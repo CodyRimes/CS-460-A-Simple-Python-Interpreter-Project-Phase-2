@@ -59,7 +59,7 @@ Statements *Parser::statements() {
             //Add this assignment-statement to our vector of statements held by the Statements class
             stmts->addStatement(assignStmt);
 
-            //HOW DO WE PROCESS STATEMENTS AFTER THIS ONE STATEMENTS? HANDLED IN ASSIGNSTATEMENT() FUNCTION?
+            //HOW DO WE PROCESS STATEMENTS AFTER THIS ONE STATEMENTS? HANDLED IN ASSIGNSTATEMENT() FUNCTION? SEE THE WHILE LOOP
         }
         //If we have a keyword, lets process the correct statement each keyword represents
         if (tok.isKeyword())
@@ -84,10 +84,12 @@ Statements *Parser::statements() {
             }
         }
 
-
+        //GET ANOTHER TOKEN TO CONTINUE THE WHILE LOOP
         tok = tokenizer.getToken();
     }
+    //Unget last token that broke us out of the while loop so we may use it later on in the program if needed (I believe should be an EOF token after we've collected all of our statements)
     tokenizer.ungetToken();
+    //Now that you have all the statements from the input file, return this out to main.cpp to use
     return stmts;
 }
 
