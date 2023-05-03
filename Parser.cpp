@@ -45,34 +45,34 @@ Statements *Parser::statements() {
     //if our token is a name (a variable/identifier), or a keyword (which would be "for" or "print"), or an End Of Line marker enter the while loop
     while (tok.isName() || tok.isKeyword() || tok.eol())
     {
-        //un-get the token so we can use this same token later the next time we call .getToken() in our code
+        //un-get the token if its not an EOL token so we can use this same token later the next time we call .getToken() in our code/later in our nested function calls ex.forStatement(), assignmentStatement(), printStatement() etc.
         if (!tok.eol())
         {
             tokenizer.ungetToken();
         }
-        //If we have a name of a variable we know we will expect an assignment statement.
+        //If we have a name of a variable we know we will have some type of simple statement (so long as the token name isn't the keyword "print")
         if (tok.isName() && !tok.isKeyword())
         {
-            //Create an AssignmentStatement type pointer and point it to the returned value of hte assignStatement() function call
-            //Lets call it assignStmt
-            AssignmentStatement *assignStmt = assignStatement();
+            //Create an SimpleStatement type pointer and point it to the returned value of the simpleStatement() function call
+            //Lets call it
+            SimpleStatement *parsedSimpleStatementWeveCaptured = simpleStatement();
             //Add this assignment-statement to our vector of statements held by the Statements class
-            stmts->addStatement(assignStmt);
+            stmts->addStatement(parsedSimpleStatementWeveCaptured);
 
             //HOW DO WE PROCESS STATEMENTS AFTER THIS ONE STATEMENTS? HANDLED IN ASSIGNSTATEMENT() FUNCTION? SEE THE WHILE LOOP
         }
-        //If we have a keyword, lets process the correct statement each keyword represents
+        //If we have a keyword for the token, lets process the correct statement each keyword represents
+        //MAY 3rd 2023 CODY: STARTING TO REALIZE THAT THE SIMPLE STATEMENT CLASS MAY BE VERY UNNESSARY AS HERE WE STILL HAVE TO BASICALLY DO THE SAME PARSING SIMPLE STATEMENT WOULD DO BUT JUST CHECKING FOR ANOTHER KEYWORD
+        //MAY HAVE TO REFACTOR THIS CODE LATER ON
         if (tok.isKeyword())
         {
-            //If we have a "for" keyword,
-            if (tok.getName() == "for")
-            {
-                //Lets make an instance of a for statement pointer that captures the returned result of our ForStatement() function
-                //Call it forstatement
-                ForStatement *forstatement = forStatement();
-                //Lets add this for-statement to our vector of statements held by the Statements class
-                stmts->addStatement(forstatement);
-            }
+            //MAY 3rd 2023 CODY: NOTE HOW FOR PHASE 2 OF THIS PROJECT WE TOTALLY SKIPPED THE COMPOUND STATEMENT GRAMMAR RULE:
+            //<compound-statement> -> <for-statement>
+            //As it is redundant and unnecessary
+            //The grammar rules provide a guide for the structure and flow of the program, but are not necessary to follow verbatim in order to complete the programs objectives.
+            //notice how we don't make a class for grammar rule <file_input> or grammar rule <atom> or <comp_op>
+            //there are some things there which are named to categorically relate symbols in their syntactical order but that we don't necessarily need to implement
+
             //If we have a "print" keyword,
             if (tok.getName() == "print")
             {
@@ -84,10 +84,10 @@ Statements *Parser::statements() {
             }
         }
 
-        //GET ANOTHER TOKEN TO CONTINUE THE WHILE LOOP
+        //GET ANOTHER TOKEN TO CONTINUE THE WHILE LOOP/OR BREAK OUT OF IT DEPENDING WHAT TOKEN WE GET BACK
         tok = tokenizer.getToken();
     }
-    //Unget last token that broke us out of the while loop so we may use it later on in the program if needed (I believe should be an EOF token after we've collected all of our statements)
+    //Unget last token that broke us out of the while loop so we may use it later on in the program if needed (I believe it should be expected to be an EOF token after we've collected all of our statements)
     tokenizer.ungetToken();
     //Now that you have all the statements from the input file, return this out to main.cpp to use
     return stmts;
