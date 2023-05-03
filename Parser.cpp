@@ -292,14 +292,19 @@ PrintStatement* Parser::printStatement()
 
 //STEP 4 HERE BY CODY APRIL 26th 2023: Adding a parser function that will take care of the grammar rule:
 //<rel-expr> -> <rel-term> {(==, !=) <rel-term>} in english that is: <relational-expression> -> <relational-term> {(==, !=) <relational-term>}
+//Cody May 3rd 2023: STEP 2 PHASE 2 HERE: Bringing everything up we had in "relationalTerm()" parser function in regards to relational operators up to this function
 ExprNode* Parser::relationalExpression()
 {
     //Our first token expected for this grammar rule is a relational term, thus
     //I guess you can kind of think of this as a place holder, but in reality it is not
     //This variable holds the return value of a function that drills down and will eventually return the atomic values the grammar rules will eventually parse
-    ExprNode *leftSideOfRelationalExpressionIsOurFirstRelationalTerm = relationalTerm();
+
+    //Cody May 3rd 2023: Commented out below code and replaced with: ExprNode *leftSideOfRelationalExpressionIsOurFirstRelationalTerm = expr();
+    //ExprNode *leftSideOfRelationalExpressionIsOurFirstRelationalTerm = relationalTerm();
+    ExprNode *leftSideOfRelationalExpressionIsOurFirstRelationalTerm = expr();
 
     //Our second token which is expected for this grammar rule should be an equal to "==" or not equal to "!=" operator, thus
+    //UPDATE CODY MAY 3rd 2023: Our token we grab which is expected for this grammar rule should be an equal to’<’|’>’|’==’|’>=’|’<=’|’<>’|’!=’ NOTE TO SELF I STILL NEED TO ADD <> TO TOKENIZER AND TOKEN
     Token relationalOperator = tokenizer.getToken();
 
     //If the token we get back from the .getToken() function is not an equal to "==" or not equal to "!=" relational operator, as we would expect in our grammar, kill the program and throw and error message back to our user
@@ -307,7 +312,7 @@ ExprNode* Parser::relationalExpression()
         //die("Parser::relationalExpression", "Expected an assignment operator \"==\" or a not equal to operator \"!=\" , instead got", relationalOperator);
 
     //While our relational operator is indeed an equal or not equal to operator
-    while (relationalOperator.isEqualOperator() || relationalOperator.isNotEqualOperator())
+    while (relationalOperator.isEqualOperator() || relationalOperator.isNotEqualOperator() || relationalOperator.isLessThanOperator() || relationalOperator.isLessThanOrEqualToOperator() || relationalOperator.isGreaterThanOperator() || relationalOperator.isGreaterThanOrEqualToOperator())
     {
         //We know that by grammar rules we should expect a relational term after them, and in this program
         //we handle those terms via our InfixExprNode sub-class described in ExprNode.cpp
@@ -315,21 +320,24 @@ ExprNode* Parser::relationalExpression()
         //LOOK UP LEFT DERIVATION SYNTENTIAL FORM TO VISUALIZE THIS TREE THAT GETS CREATED
         InfixExprNode* p = new InfixExprNode(relationalOperator);
         p->left() = leftSideOfRelationalExpressionIsOurFirstRelationalTerm;
-        p->right() = relationalTerm();
+        //Cody May 3rd 2023: Commented out below code and replaced with: p->right() = expr();
+        //p->right() = relationalTerm();
+        p->right() = expr();
         leftSideOfRelationalExpressionIsOurFirstRelationalTerm = p;
         //Get the next token. If it is indeed an equal operator or a not equal to operator, we continue to get relational expressions using this while loop
         relationalOperator = tokenizer.getToken();
     }
-    //If the next token is not a equal operator or a not equal operator, we break out of the while loop. There are no more relational expressions to read at this point
+    //If the next token is not a an equal to a ’<’|’>’|’==’|’>=’|’<=’|’<>’|’!=’ operator, we break out of the while loop. There are no more relational expressions to read at this point
 
     //Set flag for ungetToken to tell .getToken() function that will use last gotten token we previously picked up (i.e. getToken() will return the last gotten token which is stored as a private variable in the tokenizer class)
     tokenizer.ungetToken();
     
     return leftSideOfRelationalExpressionIsOurFirstRelationalTerm;
 }
-
+//STEP 2 PHASE 2 UPDATE BY CODY MAY 3rd 2023: COMMENTING OUT relationalTerm() FUNCTION AS IT'S FUNCTIONALITY HAS NOW BEEN INCORPORATED INTO THE relationalExpression() PARSER FUNCTION. THIS FUNCTION IS NO LONGER NECESSARY
 //STEP 4 HERE BY CODY APRIL 26th 2023:  Adding a parser function that will take care of the grammar rule:
 //<rel-term> -> <rel-primary> {(>, >=, <, <=) <rel-primary>} in english that is: <relational-term> -> <relational-primary> {(>, >=, <, <=) <relational-primary>}
+/*
 ExprNode* Parser::relationalTerm()
 {
     //CODY APRIL 26th 2023: USE C++ EXPR() FUNCTION TO REPRESENT <REL-PRIMARY> GRAMMAR RULE FOR NOW
@@ -369,6 +377,7 @@ ExprNode* Parser::relationalTerm()
     //
     return leftSideOfRelationalTermIsOurFirstRelationalPrimary;
 }
+*/
 
 ExprNode* Parser::expr() {
     // This function parses the grammar rules:
