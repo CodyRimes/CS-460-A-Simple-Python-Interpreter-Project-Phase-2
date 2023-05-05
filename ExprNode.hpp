@@ -23,7 +23,8 @@ public:
     explicit ExprNode(Token token);
     Token token();
     virtual void print() = 0;
-    virtual int evaluate(SymTab &symTab) = 0;
+    //Phase 2 step 4 changed this to return type descriptors no
+    virtual TypeDescriptor* evaluate(SymTab &symTab) = 0;
 
 private:
     Token _token;
@@ -44,7 +45,8 @@ public:
     ExprNode *&left();
     ExprNode *&right();
     void print () override;
-    int evaluate(SymTab &symTab) override;
+    //Phase 2 step 4 changed this to return type descriptors now
+    TypeDescriptor* evaluate(SymTab &symTab) override;
 
 private:
     ExprNode *_left, *_right;
@@ -59,7 +61,8 @@ public:
     explicit WholeNumber(Token token);
     void print() override;
     //STEP 4 HERE BY ADAM: ADDED FUNCTIONALITY TO EVALUATE FUNCTION TO INCLUDE HANDLING RELATIONAL OPERATORS
-    int evaluate(SymTab &symTab) override;
+    //Phase 2 step 4 changed this to return type descriptors now
+    TypeDescriptor* evaluate(SymTab &symTab) override;
 };
 
 // Variable is a leaf-node in an expression tree. It corresponds to
@@ -70,7 +73,8 @@ class Variable: public ExprNode {
 public:
     explicit Variable(Token token);
     void print() override;
-    int evaluate(SymTab &symTab) override;
+    //Phase 2 step 4 changed this to return type descriptors now
+    TypeDescriptor* evaluate(SymTab &symTab) override;
 };
 
 

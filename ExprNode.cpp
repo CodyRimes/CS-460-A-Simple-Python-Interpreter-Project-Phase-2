@@ -5,6 +5,7 @@
 
 #include<iostream>
 #include "ExprNode.hpp"
+#include "TypeDescriptor.hpp"
 //ExprNode is a base class that we literally never use directly. We only use ExprNode pointers so that we can employ polymorphism to have code which works on all ExprNode subclasses and dynamically behaves according to subclass traits at runtime. We are always using the evaluate method of subclasses because every ExprNode subclass must define their own evaluate method (because it is declared a virtual method in ExprNode). If we aren't evaluating an atomic value (a variable, a literal number, a literal string, etc.) then we are using the InfixExprNode evaluate method.
 // STEP 3 RENAME ArithExpr to ExprNode
 // ExprNode
@@ -19,7 +20,8 @@ ExprNode *&InfixExprNode::left() { return _left; }
 
 ExprNode *&InfixExprNode::right() { return _right; }
 
-int InfixExprNode::evaluate(SymTab &symTab) {
+//Phase 2 step 4 changed this to return type descriptors now
+TypeDescriptor* InfixExprNode::evaluate(SymTab &symTab) {
     // Evaluates an infix expression using a post-order traversal of the expression tree.
     int lValue = left()->evaluate(symTab);
     int rValue = right()->evaluate(symTab);
@@ -69,7 +71,8 @@ void WholeNumber::print() {
     token().print();
 }
 
-int WholeNumber::evaluate(SymTab &symTab) {
+//Phase 2 step 4 changed this to return type descriptors now
+TypeDescriptor* WholeNumber::evaluate(SymTab &symTab) {
     if(debug)
         std::cout << "WholeNumber::evaluate: returning " << token().getWholeNumber() << std::endl;
     return token().getWholeNumber();
@@ -83,7 +86,8 @@ void Variable::print() {
     token().print();
 }
 
-int Variable::evaluate(SymTab &symTab) {
+//Phase 2 step 4 changed this to return type descriptors now
+TypeDescriptor* Variable::evaluate(SymTab &symTab) {
     if( ! symTab.isDefined(token().getName())) {
         std::cout << "Use of undefined variable, " << token().getName() << std::endl;
         exit(1);

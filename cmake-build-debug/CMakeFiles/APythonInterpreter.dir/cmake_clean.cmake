@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/APythonInterpreter.dir/Token.cpp.obj.d"
   "CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.obj"
   "CMakeFiles/APythonInterpreter.dir/Tokenizer.cpp.obj.d"
+  "CMakeFiles/APythonInterpreter.dir/TypeDescriptor.cpp.obj"
+  "CMakeFiles/APythonInterpreter.dir/TypeDescriptor.cpp.obj.d"
   "CMakeFiles/APythonInterpreter.dir/main.cpp.obj"
   "CMakeFiles/APythonInterpreter.dir/main.cpp.obj.d"
 )

@@ -5,18 +5,18 @@
 #include <iostream>
 #include "SymTab.hpp"
 
-void SymTab::setValueFor(const std::string &vName, int value) {
+void SymTab::setValueFor(const std::string &vName, TypeDescriptor* dataTypeAndValue) {
     // Define a variable by setting its initial value.
     if(debug)
-        std::cout << vName << " <- " << value << std::endl;
-    symTab[vName] = value;
+        std::cout << vName << " <- " << dataTypeAndValue << std::endl;
+    symTab[vName] = dataTypeAndValue;
 }
 
 bool SymTab::isDefined(const std::string &vName) {
     return symTab.find(vName) != symTab.end();
 }
 
-int SymTab::getValueFor(const std::string &vName) {
+TypeDescriptor* SymTab::getValueFor(const std::string &vName) {
     if( ! isDefined(vName)) {
         std::cout << "SymTab::getValueFor: " << vName << " has not been defined.\n";
         exit(1);

@@ -262,6 +262,30 @@ Tokenizer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\APythonInterpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\APythonInterpreter.dir\Tokenizer.cpp.s
 .PHONY : Tokenizer.cpp.s
 
+TypeDescriptor.obj: TypeDescriptor.cpp.obj
+.PHONY : TypeDescriptor.obj
+
+# target to build an object file
+TypeDescriptor.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APythonInterpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\APythonInterpreter.dir\TypeDescriptor.cpp.obj
+.PHONY : TypeDescriptor.cpp.obj
+
+TypeDescriptor.i: TypeDescriptor.cpp.i
+.PHONY : TypeDescriptor.i
+
+# target to preprocess a source file
+TypeDescriptor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APythonInterpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\APythonInterpreter.dir\TypeDescriptor.cpp.i
+.PHONY : TypeDescriptor.cpp.i
+
+TypeDescriptor.s: TypeDescriptor.cpp.s
+.PHONY : TypeDescriptor.s
+
+# target to generate assembly for a file
+TypeDescriptor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\APythonInterpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\APythonInterpreter.dir\TypeDescriptor.cpp.s
+.PHONY : TypeDescriptor.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -313,6 +337,9 @@ help:
 	@echo ... Tokenizer.obj
 	@echo ... Tokenizer.i
 	@echo ... Tokenizer.s
+	@echo ... TypeDescriptor.obj
+	@echo ... TypeDescriptor.i
+	@echo ... TypeDescriptor.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
