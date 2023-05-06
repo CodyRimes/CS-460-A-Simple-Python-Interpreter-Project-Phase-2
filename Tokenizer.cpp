@@ -68,7 +68,7 @@ Token Tokenizer::getToken() {
     Token token;
     if( inStream.eof()) {
         token.eof() = true;
-    } else if( c == '\n' ) {  // will not ever be the case unless new-line characters are not supressed.
+    } else if( c == '\n' ) {  // will not ever be the case unless new-line characters are not supressed in line 58 (isspace() would have taken in new line characters as well).
         token.eol() = true;
     } else if( isdigit(c) ) { // a integer?
         // put the digit back into the input stream so
@@ -115,11 +115,25 @@ Token Tokenizer::getToken() {
 
     else if( c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
         token.symbol(c);
-    //Phase 2 part 6 here, added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
-    else if( c == ';' || c == '#' || c == '.' || c == '"' || c == ',')
+    //Phase 2 part 6 here, May 6th 2023 added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
+    else if( c == ';' || c == '.' || c == '"' || c == ',')
         token.symbol(c);
     else if( c == '(' || c == ')' || c == '{' || c == '}')
         token.symbol(c);
+        //Phase 2 part 6 here, May 6th 2023 we are handling python # comments but since comments have no impact on the code we want to tokenize we will just need to let our tokenizer handle them, process them, and throw them away
+        //i.e. python comments are not a part of our python program and do not need to be tokenized and parsed
+    else if( c == '#')
+    {
+        //If we see a hashtag we know we will need to process a python comment
+        //To do that we basically will need to keep reading in character inputs until we have reached an end of line character which means we've reached the end of the python comment
+        while ( c != '\n')
+        {
+            inStream.get(c);
+        }
+        //Once we reach the end of the line character we need to mark that down in our token
+        token.eol() = true;
+
+    }
     //STEP 2 HERE CONTINUED:
     //Cody: If this indeed where we would handle the relational expressions character by character ( ex. ==, !=, >, >=, <, <= ) we will pick up  "<" and "=" character by character and put them back.
     //Only "!" needs to be added here from what I can see

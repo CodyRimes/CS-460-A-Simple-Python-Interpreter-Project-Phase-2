@@ -13,9 +13,12 @@ class Token {
 
 public:
     Token();
+    //Setters. How? The & operator returns the member variables by reference instead of by value so their data is accessed directly. The compiler will use the setter when you do modifying statements to the symbol "eol()" because the getter cannot be modified by definition, and the setter can
+    //it matches the appropriate function call based on how the resulting object is operated on
     bool &eof()  { return _eof; }
     bool &eol()  { return _eol; }
 
+    //Getters
     bool eof() const { return _eof; }
     bool eol() const  { return _eol; }
 
@@ -61,6 +64,10 @@ public:
 
     std::string getStringForRelationalOperator() const { return _stringforrationaloperator; }
     void setStringForRelationalOperator(std::string incomingString) { _stringforrationaloperator = incomingString;}
+
+    std::string getStringFromGenericStringHolder() const { return _genericStringHolder; }
+    void setStringFromGenericStringHolder(std::string incomingString) { _genericStringHolder = incomingString;}
+
 
     bool &isWholeNumber() { return _isWholeNumber; }
     bool isWholeNumber() const { return _isWholeNumber; }
@@ -111,6 +118,7 @@ public:
 private:
     std::string _name;
     std::string _stringforrationaloperator;
+    std::string _genericStringHolder;
     bool _eof, _eol;
     bool _isWholeNumber;
     char _symbol;
