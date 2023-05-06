@@ -33,7 +33,7 @@ AssignmentStatement::AssignmentStatement(std::string lhsVar, ExprNode *rhsExpr):
 
 //This will be called in main.cpp and is used to see if the values of the assignment statement have changed through the course of reading in the program we are parsing's statements
 void AssignmentStatement::evaluate(SymTab &symTab) {
-    int rhs = rhsExpression()->evaluate(symTab);
+    TypeDescriptor* rhs = rhsExpression()->evaluate(symTab);
     //Updating the left hand side of the expression to be the new value that we got
     symTab.setValueFor(lhsVariable(), rhs);
 }
@@ -147,14 +147,14 @@ SimpleStatement::SimpleStatement()
 }
 
 //Parameterized constructors
-SimpleStatement::SimpleStatement(AssignmentStatement *setPrivateAssignmentStatementVariableToThis, Token incomingEndOfLineToken)
+SimpleStatement::SimpleStatement(AssignmentStatement *setPrivateAssignmentStatementVariableToThis)
 {
     _thisSimpleStatementsAssignmentStatement = setPrivateAssignmentStatementVariableToThis;
     _thisSimpleStatementsPrintStatement = nullptr;
     //_endOfLineToken = incomingEndOfLineToken;
 }
 
-SimpleStatement::SimpleStatement(PrintStatement *setPrivatePrintStatementVariableToThis, Token incomingEndOfLineToken)
+SimpleStatement::SimpleStatement(PrintStatement *setPrivatePrintStatementVariableToThis)
 {
     _thisSimpleStatementsAssignmentStatement = nullptr;
     _thisSimpleStatementsPrintStatement = setPrivatePrintStatementVariableToThis;

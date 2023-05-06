@@ -28,12 +28,12 @@ public:
     virtual TypeDescriptor* operator - (TypeDescriptor* secondTypeDescriptorWeWantToSubtract);
     virtual TypeDescriptor* operator * (TypeDescriptor* secondTypeDescriptorWeWantToMultiply);
     virtual TypeDescriptor* operator / (TypeDescriptor* secondTypeDescriptorWeWantToDivide);
-    virtual bool operator < (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual bool operator > (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual bool operator <= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual bool operator >= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual bool operator == (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual bool operator != (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator < (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator > (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator <= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator >= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator == (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+    virtual TypeDescriptor* operator != (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
 
 
 
@@ -61,16 +61,16 @@ public:
     int intValue () const;  // if our union private member variable is a integer datatype, returns the integer value
 
     //Overloaded operators so we can do arithmetic operations between two instances of this class (note that the compiler itself would not know how to do those types of operations without our specific instructions)
-    NumericTypeDescriptor* operator + (const NumericTypeDescriptor* other); // adds two numerical values
-    NumericTypeDescriptor* operator - (const NumericTypeDescriptor* other); // subtracts two numerical values
-    NumericTypeDescriptor* operator * (const NumericTypeDescriptor* other); // multiplies two numerical values
-    NumericTypeDescriptor* operator / (const NumericTypeDescriptor* other); // divides two numerical values
-    bool operator < (const NumericTypeDescriptor* other);
-    bool operator > (const NumericTypeDescriptor* other);
-    bool operator <= (const NumericTypeDescriptor* other);
-    bool operator >= (const NumericTypeDescriptor* other);
-    bool operator == (const NumericTypeDescriptor* other);
-    bool operator != (const NumericTypeDescriptor* other);
+    TypeDescriptor* operator + ( TypeDescriptor* other) override; // adds two numerical values
+    TypeDescriptor* operator - ( TypeDescriptor* other) override; // subtracts two numerical values
+    TypeDescriptor* operator * ( TypeDescriptor* other) override; // multiplies two numerical values
+    TypeDescriptor* operator / ( TypeDescriptor* other) override; // divides two numerical values
+    TypeDescriptor* operator < ( TypeDescriptor* other) override;
+    TypeDescriptor* operator > ( TypeDescriptor* other) override;
+    TypeDescriptor* operator <= ( TypeDescriptor* other) override;
+    TypeDescriptor* operator >= ( TypeDescriptor* other) override;
+    TypeDescriptor* operator == ( TypeDescriptor* other) override;
+    TypeDescriptor* operator != ( TypeDescriptor* other) override;
 
 
 
@@ -106,7 +106,7 @@ public:
     void setStringValue(std::string value);  // sets our private member variable's string value.
 
     //May be unnecessary. Use getter and add two instances's strings together that way?
-    StringTypeDescriptor* operator+(const StringTypeDescriptor* other); // concatenates two instances of our StringTypeDescriptor together
+    TypeDescriptor* operator+( TypeDescriptor* other) override; // concatenates two instances of our StringTypeDescriptor together
 private:
     std::string _ourString;
     //Note how inherit the private member variable _type from our base class in TypeDescriptor

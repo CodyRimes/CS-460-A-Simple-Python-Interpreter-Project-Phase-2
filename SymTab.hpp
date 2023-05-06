@@ -9,11 +9,11 @@
 #include <string>
 #include <map>
 
+//Cody May 4th 2023: Update (Phase 2 Part 3 has changed this to now hold type descriptors instead of integers)
 // This is a flat and integer-based symbol table. It allows for variables to be
-// initialized, determines if a give variable has been defined or not, and if
+// initialized, determines if a given variable has been defined or not, and if
 // a variable has been defined, it returns its value.
 
-//Step 4 in phase 2 changed all int's in the symbol table to instead hold type descriptors
 class SymTab {
 public:
     void setValueFor(const std::string &vName, TypeDescriptor* value);

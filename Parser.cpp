@@ -432,8 +432,10 @@ ExprNode* Parser::primary() {
     Token tok = tokenizer.getToken();
 
     if (tok.isWholeNumber() )
+        //Cody May 4th 2023: Phase 2 Step 3 these ExprNode classes now will return TypeDescriptors instead of integers
         return new WholeNumber(tok);
     else if( tok.isName() )
+        //Cody May 4th 2023: Phase 2 Step 3 these ExprNode classes now will return TypeDescriptors instead of integers
         return new Variable(tok);
     else if (tok.isOpenParen()) {
         ExprNode* p = relationalExpression();

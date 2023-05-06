@@ -1,6 +1,8 @@
 //
 // Created by Cody on 5/3/2023.
 //
+//Phase 2 Step 3 HERE May 4th 2023 by Cody:
+//these TypeDescriptor files help our SymbolTable not only process integer variables as it did before but extends it to handle different datatypes such as doubles, bools, and strings, and also helps it keep track of what datatypes the variables names contain/are associated with, and (with the way I built out my TypeDescriptors) helps our ExpressionNodes do (arithemetic and relational comparison) operations amongst different the data types
 
 #include<iostream>
 #include "TypeDescriptor.hpp"
@@ -84,34 +86,46 @@ bool NumericTypeDescriptor::boolValue() const
 
 
 
-NumericTypeDescriptor* NumericTypeDescriptor::operator + (const NumericTypeDescriptor* other)
+TypeDescriptor* NumericTypeDescriptor::operator + ( TypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
+    //other = static_cast<NumericTypeDescriptor*>(other);
 
     //This is a double, the incoming one is an integer
     if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER))
     {
-        return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() + other->intValue());
+        //Note how we could have written the code like this:
+        //return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() + (*(NumericTypeDescriptor*)other).intValue());
+        //This may be easier to read, so lets do this:
+        return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() + ((NumericTypeDescriptor*)other)->intValue());
+
     }
 
     //This is an integer, the incoming one is a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() + other->intValue());
     }
 
     //Both are a double
-    if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE))
+    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() + other->intValue());
     }
 
     //Both are an integer
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::INTEGER, this->intValue() + other->intValue());
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload + between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
 
 
 }
@@ -128,22 +142,28 @@ NumericTypeDescriptor* NumericTypeDescriptor::operator - (const NumericTypeDescr
     }
 
     //This is an integer, the incoming one is a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() - other->intValue());
     }
 
     //Both are a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() - other->intValue());
     }
 
     //Both are an integer
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::INTEGER, this->intValue() - other->intValue());
     }
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload - between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
 
 
 }
@@ -159,22 +179,29 @@ NumericTypeDescriptor* NumericTypeDescriptor::operator * (const NumericTypeDescr
     }
 
     //This is an integer, the incoming one is a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() * other->intValue());
     }
 
     //Both are a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() * other->intValue());
     }
 
     //Both are an integer
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::INTEGER, this->intValue() * other->intValue());
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload * between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
 
 
 }
@@ -192,131 +219,160 @@ NumericTypeDescriptor* NumericTypeDescriptor::operator / (const NumericTypeDescr
     }
 
     //This is an integer, the incoming one is a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() / other->intValue());
     }
 
     //Both are a double
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() / other->intValue());
     }
 
     //Both are an integer
-    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
         return new NumericTypeDescriptor(TypeDescriptor::INTEGER, this->intValue() / other->intValue());
     }
 
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload / between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
 
 }
 
-bool NumericTypeDescriptor::operator < (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator < (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
-
     //This is a double, the incoming one is an integer
-    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() < other->intValue()) )
+    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() < other->intValue()));
     }
 
     //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() < other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() < other->doubleValue()));
     }
 
     //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() < other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() < other->doubleValue()));
     }
 
     //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() < other->intValue()))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() < other->intValue()));
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload < between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
+     */
 
 }
-bool NumericTypeDescriptor::operator > (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator > (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
 
     //This is a double, the incoming one is an integer
-    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() > other->intValue()) )
+    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER))
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() > other->intValue()));
     }
 
         //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() > other->doubleValue()) )
+    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() > other->doubleValue()));
     }
 
         //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() > other->doubleValue()) )
+    if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() > other->doubleValue()));
     }
 
-        //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() > other->intValue()))
+    //Both are an integer
+    if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() > other->intValue()));
     }
+    else //Let's give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload > between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
-
+    */
 }
 
-bool NumericTypeDescriptor::operator <= (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator <= (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
 
     //This is a double, the incoming one is an integer
-    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() <= other->intValue()) )
+    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER)  )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() <= other->intValue()));
     }
 
         //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() <= other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE)  )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() <= other->doubleValue()));
     }
 
         //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() <= other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE)  )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() <= other->doubleValue()));
     }
 
         //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() <= other->intValue()))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() <= other->intValue()));
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload <= between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
+    */
 
 }
 
-bool NumericTypeDescriptor::operator >= (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator >= (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
@@ -324,98 +380,122 @@ bool NumericTypeDescriptor::operator >= (const NumericTypeDescriptor* other)
     //This is a double, the incoming one is an integer
     if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() >= other->intValue()) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() >= other->intValue()));
     }
 
-        //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() >= other->doubleValue()) )
+    //This is an integer, the incoming one is a double
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() >= other->doubleValue()));
     }
 
-        //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() >= other->doubleValue()) )
+    //Both are a double
+    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() >= other->doubleValue()));
     }
 
-        //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() >= other->intValue()))
+    //Both are an integer
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() >= other->intValue()));
     }
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload >= between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
+     */
 }
 
-bool NumericTypeDescriptor::operator == (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator == (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
 
     //This is a double, the incoming one is an integer
-    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() == other->intValue()) )
+    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() == other->intValue()));
     }
 
         //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() == other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() == other->doubleValue()));
     }
 
         //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() == other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() == other->doubleValue()));
     }
 
         //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() == other->intValue()))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() == other->intValue()));
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+        std::cout <<"Operation overload == between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
+    */
 }
 
-bool NumericTypeDescriptor::operator != (const NumericTypeDescriptor* other)
+NumericTypeDescriptor* NumericTypeDescriptor::operator != (const NumericTypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
 
 
     //This is a double, the incoming one is an integer
-    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) && (this->doubleValue() != other->intValue()) )
+    if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::INTEGER) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() != other->intValue()));
     }
 
         //This is an integer, the incoming one is a double
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) && (this->intValue() != other->doubleValue()) )
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() != other->doubleValue()));
     }
 
         //Both are a double
-    else if ((this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) && (this->doubleValue() != other->doubleValue()) )
+    else if ( (this->type() == TypeDescriptor::DOUBLE) && (other->type() == TypeDescriptor::DOUBLE) )
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->doubleValue() != other->doubleValue()));
     }
 
         //Both are an integer
-    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER) && (this->intValue() != other->intValue()))
+    else if ((this->type() == TypeDescriptor::INTEGER) && (other->type() == TypeDescriptor::INTEGER))
     {
-        return true;
+        return new NumericTypeDescriptor(TypeDescriptor::BOOL, (this->intValue() != other->intValue()));
     }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+       return new NumericTypeDescriptor(TypeDescriptor::BOGUS);
+       std::cout <<"Operation overload != between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
+    /*
     else //no comparisons have passed. return false
     {
         return false;
     }
+     */
 
 }
 

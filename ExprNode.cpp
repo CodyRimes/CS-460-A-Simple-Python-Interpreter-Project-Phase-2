@@ -23,33 +23,34 @@ ExprNode *&InfixExprNode::right() { return _right; }
 //Phase 2 step 4 changed this to return type descriptors now
 TypeDescriptor* InfixExprNode::evaluate(SymTab &symTab) {
     // Evaluates an infix expression using a post-order traversal of the expression tree.
-    int lValue = left()->evaluate(symTab);
-    int rValue = right()->evaluate(symTab);
+    // Cody May 4th 2023: Phase 2 Part 3: changed lValue and rValue to be of TypeDescriptor* pointer types. Note how we could probably use auto here as well.
+    TypeDescriptor* lValue = left()->evaluate(symTab);
+    TypeDescriptor* rValue = right()->evaluate(symTab);
     if(debug)
         std::cout << "InfixExprNode::evaluate: " << lValue << " " << token().symbol() << " " << rValue << std::endl;
     if (token().isAdditionOperator())
-        return lValue + rValue;
+        return *lValue + rValue;
     else if (token().isSubtractionOperator())
-        return lValue - rValue;
+        return *lValue - rValue;
     else if (token().isMultiplicationOperator())
-        return lValue * rValue;
+        return *lValue * rValue;
     else if (token().isDivisionOperator())
-        return lValue / rValue; // division by zero?
+        return *lValue / rValue; // division by zero?
     else if (token().isModuloOperator())
-        return lValue % rValue;
+        ;//return *lValue % rValue;
     //Cody: Looks like Adam completed part of Step 4 here and added this functionality to the expression node class function
     else if (token().isLessThanOperator())
-        return lValue < rValue;
+        return *lValue < rValue;
     else if (token().isLessThanOrEqualToOperator())
-        return lValue <= rValue;
+        return *lValue <= rValue;
     else if (token().isGreaterThanOperator())
-        return lValue > rValue;
+        return *lValue > rValue;
     else if (token().isGreaterThanOrEqualToOperator())
-        return lValue >= rValue;
+        return *lValue >= rValue;
     else if (token().isEqualOperator())
-        return lValue == rValue;
+        return *lValue == rValue;
     else if (token().isNotEqualOperator())
-        return lValue != rValue;
+        return *lValue != rValue;
     else {
         std::cout << "InfixExprNode::evaluate: don't know how to evaluate this operator\n";
         token().print();
@@ -75,7 +76,8 @@ void WholeNumber::print() {
 TypeDescriptor* WholeNumber::evaluate(SymTab &symTab) {
     if(debug)
         std::cout << "WholeNumber::evaluate: returning " << token().getWholeNumber() << std::endl;
-    return token().getWholeNumber();
+    return new NumericTypeDescriptor(TypeDescriptor::INTEGER,  token().getWholeNumber());
+    //return token().getWholeNumber();
 }
 
 // Variable
