@@ -115,7 +115,8 @@ Token Tokenizer::getToken() {
 
     else if( c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
         token.symbol(c);
-    else if( c == ';' )
+    //Phase 2 part 6 here, added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
+    else if( c == ';' || c == '#' || c == '.' || c == '"' || c == ',')
         token.symbol(c);
     else if( c == '(' || c == ')' || c == '{' || c == '}')
         token.symbol(c);

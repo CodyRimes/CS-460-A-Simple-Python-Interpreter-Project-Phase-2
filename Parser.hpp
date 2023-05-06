@@ -38,6 +38,9 @@ public:
     ForStatement* forStatement();
 
     PrintStatement* printStatement();
+    CommentStatement* commentStatement();
+
+
 
     //STEP 1 Phase 2 HERE May 2nd 2023:
 

@@ -25,9 +25,11 @@ public:
     bool isOpeningCurlyBrace() const { return _symbol == '{' ;}
     bool isClosingCurlyBrace() const { return _symbol == '}' ;}
 
+    //Setter and getter for our _symbol private variable
     void symbol(char c) { _symbol = c; }
     char symbol() { return _symbol; }
 
+    //Returns true if the _symbol private member variable is equivalent to the comparison we give it, returns false if it is not match
     bool isSemiColon() const { return _symbol == ';'; }
     bool isAssignmentOperator() const              { return _symbol == '='; }
     bool isMultiplicationOperator() const { return _symbol == '*'; }
@@ -42,6 +44,9 @@ public:
     bool isGreaterThanOrEqualToOperator() const   { return _stringforrationaloperator == ">=";}
     bool isLessThanOrEqualToOperator() const      { return _stringforrationaloperator == "<=";}
     bool isEqualOperator() const               { return _stringforrationaloperator == "==";}
+    bool isHashtag() const { return _symbol == '#';}
+    bool isPeriod() const {return _symbol == '.';}
+    bool isQuotationMark() const {return _symbol == '"';}
 
     bool isArithmeticOperator() const {
         return isMultiplicationOperator() ||

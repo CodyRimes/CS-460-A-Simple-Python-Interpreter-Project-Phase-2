@@ -191,4 +191,31 @@ private:
     Statements* _bodyOfForLoop;
 };
 
+
+class CommentStatement : public Statement {
+public:
+    // Default constructor
+    CommentStatement() {}
+
+    // Parameterized constructor
+    CommentStatement(std::vector<std::string> expression) : expression(expression) {}
+
+    // Override the print function
+    virtual void print() {
+        std::cout << "# ";
+        for (std::string str : expression) {
+            std::cout << str << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // Override the evaluate function
+    virtual void evaluate(SymTab& symTab) {}
+
+private:
+    // We only need to save the comment as a string
+    std::vector<std::string> expression;
+
+};
+
 #endif //APYTHONINTERPRETER_STATEMENTS_HPP

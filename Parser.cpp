@@ -43,7 +43,7 @@ Statements *Parser::statements() {
     //Get a token
     Token tok = tokenizer.getToken();
     //if our token is a name (a variable/identifier), or a keyword (which would be "for" or "print"), or an End Of Line marker enter the while loop
-    while (tok.isName() || tok.isKeyword() || tok.eol())
+    while (tok.isName() || tok.isKeyword() || tok.eol() || tok.isHashtag())
     {
         //un-get the token if its not an EOL token so we can use this same token later the next time we call .getToken() in our code/later in our nested function calls ex.forStatement(), assignmentStatement(), printStatement() etc.
         if (!tok.eol())
@@ -74,14 +74,19 @@ Statements *Parser::statements() {
             //there are some things there which are named to categorically relate symbols in their syntactical order but that we don't necessarily need to implement
 
             //If we have a "print" keyword,
-            if (tok.getName() == "print")
+            if (tok.getName() == "for")
             {
                 //Lets make an instance of a print statement pointer that captures the returned result of our PrintStatement() function
                 //Call it  printstatement
-                PrintStatement *printstatement = printStatement();
+                ForStatement* forStatement = forStatement();
                 //Lets add this print-statement to our vector of statements held by the Statements class
-                stmts->addStatement(printstatement);
+                stmts->addStatement(forStatement);
             }
+        }
+        if(tok.isHashtag())
+        {
+            CommentStatement *commmentstatement = commentStatement();
+            stmts->addStatement(commmentstatement);
         }
 
         //GET ANOTHER TOKEN TO CONTINUE THE WHILE LOOP/OR BREAK OUT OF IT DEPENDING WHAT TOKEN WE GET BACK
@@ -288,6 +293,32 @@ PrintStatement* Parser::printStatement()
     //Return a new printStatement instance who has all the correct parts since we have gotten through all of our parsing for a printStatement
     return new PrintStatement(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
 
+}
+
+CommentStatement *Parser::commentStatement() {
+    //Get the next token
+    Token hashtag = tokenizer.getToken();
+    // The token we get should be a '#' token
+    if (!hashtag.isHashtag()){
+        die("Parser::commentStatement", "Expect a # token , instead got ", hashtag );
+    }
+    // Process the comment and save it
+    std::vector<ExprNode*> comment = {};
+    std::vector<std::string> comment1 = {};
+
+    // Keep getting tokens until we reach the end of line or end of file
+    Token tok;
+    do {
+        tok = tokenizer.getToken();
+        if (tok.eol()) {
+            break;
+        }
+        comment1.push_back(tok.getName());
+    } while (true);
+
+
+    // Construct and return the CommentStatement object
+    return new CommentStatement(comment1);
 }
 
 //STEP 4 HERE BY CODY APRIL 26th 2023: Adding a parser function that will take care of the grammar rule:

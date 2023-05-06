@@ -27,6 +27,11 @@ void Token::print() const {
     else if( isGreaterThanOrEqualToOperator() ) std::cout << ">=";
     else if( isLessThanOperator() ) std::cout << "<";
     else if( isLessThanOrEqualToOperator() ) std::cout << "<=";
+    else if ( isHashtag() ) std::cout << "#";
+    else if ( isPeriod() ) std::cout << ".";
+    else if ( isQuotationMark() ) std::cout << "\"";
+    else if ( isOpeningCurlyBrace() ) std::cout << "{";
+    else if ( isClosingCurlyBrace() ) std::cout << "}";
     //Could we do this?:
     //else if(isRelationalOperator() ) std::cout << getStringForRelationalOperator();
 
