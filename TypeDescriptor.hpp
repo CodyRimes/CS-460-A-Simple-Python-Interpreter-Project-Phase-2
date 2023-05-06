@@ -19,8 +19,23 @@ public:
     TypeDescriptor();
     //Parameterized constructor
     TypeDescriptor(ourCustomEnumDatatype type);
+    TypeDescriptor(ourCustomEnumDatatype type, std::string ourStringValue);
+    TypeDescriptor(ourCustomEnumDatatype type, int incomingIntegerValue);
+    TypeDescriptor(ourCustomEnumDatatype type, double incomingDoubleValue);
+    TypeDescriptor(ourCustomEnumDatatype type, bool incomingBoolValue);
     //Getter that returns our private member variable
-    const ourCustomEnumDatatype type() const { return _type; }
+    const ourCustomEnumDatatype getOurDataType() const { return _type; }
+
+    //Getters for our private member variables
+    bool boolValue() const; // if our union private member variable is a bool datatype, returns the bool value
+    double doubleValue() const;  // if our union private member variable is a double datatype, returns the double value
+    int intValue () const;  // if our union private member variable is a integer datatype, returns the integer value
+
+    //Getter
+    std::string getStringValue() const; // returns our private member variable's string value.
+    //Setter
+    void setStringValue(std::string value);  // sets our private member variable's string value.
+
     //virtual destructor, allows derived classes to define their own implementation of the desctructor if necessary
     virtual ~TypeDescriptor() {}
 
@@ -40,8 +55,18 @@ public:
 private:
     //This is our enum datatypes which we gave the variable name "types" to earlier in this code
     ourCustomEnumDatatype _type;
-
+    std::string _ourString;
+    union
+    {
+        int integerValueWeChooseToBe;
+        double doubleValueWeChooseToBe;
+        bool boolValueWeChooseToBe;
+    } dataTypeWeChooseToBe;
 };
+
+
+
+/* CODY MAY 5th 2023 COMMENTING OUT THIS CODE. TRYING TO KEEP OBJECT ORIENTED PROGRAMMING CONCEPTS SEEMS TO BE CAUSING MORE PROBLEMS THAN IT IS HELPING TO SOLVE. MAKING TYPE DESCRIPTOR ABLE TO HANDLE EVERYTHING ON ITS OWN/FULLY ENCOMPASSING
 
 //TypeDescriptor sub-class that will handle integers and doubles
 class NumericTypeDescriptor : public TypeDescriptor {
@@ -112,4 +137,5 @@ private:
     //Note how inherit the private member variable _type from our base class in TypeDescriptor
 };
 
+ */
 #endif //APYTHONINTERPRETER_TYPEDESCRIPTOR_HPP
