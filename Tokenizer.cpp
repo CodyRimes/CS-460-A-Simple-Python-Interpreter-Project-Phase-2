@@ -116,7 +116,7 @@ Token Tokenizer::getToken() {
     else if( c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
         token.symbol(c);
     //Phase 2 part 6 here, May 6th 2023 added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
-    else if( c == ';' || c == '.' || c == '"' || c == ',')
+    else if( c == ';' || c == '.' || c == ',')
         token.symbol(c);
     else if( c == '(' || c == ')' || c == '{' || c == '}')
         token.symbol(c);
@@ -132,6 +132,30 @@ Token Tokenizer::getToken() {
         }
         //Once we reach the end of the line character we need to mark that down in our token
         token.eol() = true;
+
+    }
+    //PHASE 2 STEP 4, MAKING IT SO OUR TOKENIZER CAN PARSE STRING LITERALS
+    else if (c == '"')
+    {
+        //if we encounter a quotation mark we know everything after that first quotation mark and before the 2nd quotation mark is up for grabs in our string we need to tokenize/make a string token
+        //Lets make a temporary string we can add to/build out character by character
+        std::string myTemporaryStringToBuildOutOn;
+
+        //Get the next token to make sure we have a string after it and not an empty string (which would be an immediate 2nd quotation mark after the first)
+        inStream.get(c);
+
+        //While our token isn't the 2nd quotation mark we should be building out our string. We do not want to capture the first quotation mark when we initially enter this while loop either so  overwriting the first character we get (that first quotationmark) is ok in this instance
+        while (c != '"')
+        {
+            //Add the character we got to the string we are trying to build out
+            myTemporaryStringToBuildOutOn = myTemporaryStringToBuildOutOn + c;
+            //Get the next token from the input stream
+            inStream.get(c);
+        }
+        //If we've encountered the 2nd quotation mark we break out of the while loop above and need to put the string we've captured into a token
+        token.setStringFromGenericStringHolder(myTemporaryStringToBuildOutOn);
+        //then we will mark this token as having a token inside of it
+        token.isStringSetter(true);
 
     }
     //STEP 2 HERE CONTINUED:

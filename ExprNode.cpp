@@ -99,3 +99,22 @@ TypeDescriptor* Variable::evaluate(SymTab &symTab) {
     return symTab.getValueFor(token().getName());
 }
 
+//Cody May 7th 2023 Phase 2 Step 4 had to add a new ExprNode sub-class that can handle string literals
+String::String(Token token) : ExprNode{token} {}
+
+void String::print() {
+    token().print();
+}
+
+//Phase 2 step 4 changed this to return type descriptors now
+TypeDescriptor* String::evaluate(SymTab &symTab) {
+    if( ! symTab.isDefined(token().getName())) {
+        std::cout << "Use of undefined variable, " << token().getName() << std::endl;
+        exit(1);
+    }
+    if(debug)
+        std::cout << "Variable::evaluate: returning " << symTab.getValueFor(token().getName()) << std::endl;
+    return symTab.getValueFor(token().getName());
+}
+
+

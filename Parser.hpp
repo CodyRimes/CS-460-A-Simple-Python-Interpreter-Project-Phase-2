@@ -38,7 +38,7 @@ public:
     ForStatement* forStatement();
 
     PrintStatement* printStatement();
-    CommentStatement* commentStatement();
+    //CommentStatement* commentStatement();
 
 
 

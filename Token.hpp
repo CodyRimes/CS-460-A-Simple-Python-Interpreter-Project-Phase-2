@@ -22,6 +22,9 @@ public:
     bool eof() const { return _eof; }
     bool eol() const  { return _eol; }
 
+    bool isString() const {return _isStringBoolValue;}
+    void isStringSetter(bool doWeHaveAStringBoolValue) {_isStringBoolValue = doWeHaveAStringBoolValue;}
+
     bool isOpenParen() const  { return _symbol == '('; }
     bool isCloseParen() const { return _symbol == ')'; }
 
@@ -123,6 +126,7 @@ private:
     bool _isWholeNumber;
     char _symbol;
     int _wholeNumber;
+    bool _isStringBoolValue;
 };
 
 
