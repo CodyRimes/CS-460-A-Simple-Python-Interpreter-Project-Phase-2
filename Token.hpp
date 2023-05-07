@@ -53,6 +53,7 @@ public:
     bool isHashtag() const { return _symbol == '#';}
     bool isPeriod() const {return _symbol == '.';}
     bool isQuotationMark() const {return _symbol == '"';}
+    bool isComma() const {return _symbol == ',';}
 
     bool isArithmeticOperator() const {
         return isMultiplicationOperator() ||

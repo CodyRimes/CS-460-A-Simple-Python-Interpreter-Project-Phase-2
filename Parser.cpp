@@ -108,6 +108,8 @@ Statements *Parser::statements() {
     return stmts;
 }
 
+//CODY MAY 7TH 2023 COMMENTED OUT SIMPLE STATEMENT AS IT IS NOT NECESSARY
+/*
 SimpleStatement* Parser::simpleStatement()
 {
     // Parses the following grammar rule from phase 2's grammar rules
@@ -161,6 +163,7 @@ SimpleStatement* Parser::simpleStatement()
     }
 
 }
+ */
 
 AssignmentStatement* Parser::assignStatement()
 {

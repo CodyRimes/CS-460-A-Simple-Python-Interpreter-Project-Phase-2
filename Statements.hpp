@@ -103,9 +103,12 @@ private:
     //std::vector<ExprNode*> _rhsExpressions;
 };
 
+
+//CODY MAY 7th 2023 COMMENTING OUT THIS CODE AS IT IS NOT NECESSARY:
+/*
 //SimpleStatement class will hold all the parts of a correctly parsed print_statement or assignment_statement once the parser.cpp file is finished parsing one for us.
 //ON MAY 3rd 2023 MADE THIS COMMIT MESSAGE:
-//"Without testing, I believe I have implemented code that handles the grammar rules necessary for <simple-statement> -> <print-stateme
+//"Without testing, I believe I have implemented code that handles the grammar rules necessary for <simple-statement> -> <print-statement
 //nt> | <assignment-statement>. This entails a class called SimpleStatement which basically holds either an AssignmentStatement or a PrintStatement, and can print and evaluate either/or. I have also included a parser function that parses tokens to make sur
 //e they follow the correct syntax for a <simple-statement> within the parser.cpp file. I want to be very clear that I am making this commit at this time to provide context that after writing all this code I do believe there is a way to parse simple-statem
 //ents without the class or additional parser function. I believe had I worked on the statements() parser function in parser.cpp I could have done the parsing there and effectively still followed the grammar rule <simple-statemetn> -> <print-statement> | <
@@ -133,7 +136,7 @@ private:
     //A simple statement is terminated with a new line character. For now lets make sure we capture that to make sure we have a syntatically correct simple statement
     //Token _endOfLineToken; commenting out as we may not need this
 };
-
+*/
 
 class ForStatement : public Statement {
 public:
@@ -192,6 +195,9 @@ private:
 };
 
 
+//Cody May 7th 2023: Moved Adam's code/funcationality to our tokenizer as comemnts need to be thrown away by the compiler but we still need to process them/read past them (i.e. they do not impact the program we are trying to interpret with this project)
+//Commenting out code
+/*
 class CommentStatement : public Statement {
 public:
     // Default constructor
@@ -217,5 +223,5 @@ private:
     std::vector<std::string> expression;
 
 };
-
+*/
 #endif //APYTHONINTERPRETER_STATEMENTS_HPP

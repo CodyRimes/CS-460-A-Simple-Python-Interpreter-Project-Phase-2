@@ -135,6 +135,8 @@ void PrintStatement::evaluate(SymTab &symTab)
 
 }
 
+//CODY MAY 7TH 2023 COMMENTED OUT CODE FOR SIMPLE STATEMENT AS IT IS NOT NECESSARY
+/*
 //AREA FOR SimpleStatement
 //Default constructor
 SimpleStatement::SimpleStatement()
@@ -190,7 +192,7 @@ void SimpleStatement::print()
 
     //We do not need to print an EOL token, so we are done here with evaluating our private member variables
 }
-
+*/
 
 
 //AREA FOR ForStatement

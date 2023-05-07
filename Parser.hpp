@@ -30,8 +30,9 @@ public:
     //Much of this functionality can go inside our statements() function
     Statements* statements();
 
+    //CODY MAY 7th 2023: COMMENTING OUT SIMPLE STATEMENT CODE AS IT IS NOT NECESSARY
     //STEP 1 Phase 2 HERE May 2nd 2023: Meanwhile we can build out a simple_statement function that will basically determine if we've seen an assignment statement or print_statement and makes sure an NEWLINE character comes after one of the two
-    SimpleStatement* simpleStatement();
+    //SimpleStatement* simpleStatement();
 
     AssignmentStatement* assignStatement();
 
