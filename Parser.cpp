@@ -278,11 +278,20 @@ ForStatement* Parser::forStatement()
     return new ForStatement(firstAssignmentStatement, ourRelationalExpression, secondAssignmentStatement, forLoopBody);
 }
 
+
+//CODY MAY 7th 2023: PHASE 2 STEP 5 HERE. Modifying parser to handle the new grammar rule
+// print_statement -> ’print’ ’(’ [ testlist ] ’)’   (Note here how 'print', '(', and ')' are string and character literals)
+// testlist -> test {’,’ test}*   (note that ',' is a character literal for a comma, and that commas in python produce blank character output
+
 //CODY APRIL 29th 2023: STEP 6 HERE
 //Added a function to the parser that will handle seeing a for-statement
 //Also added functionality to the Statements class/.cpp/.hpp file to make a sub-class of statement called PrintStatement
 PrintStatement* Parser::printStatement()
 {
+    //Cody May 7th 2023: Updated grammar rule is as follows:
+    //print_statement -> ’print’ ’(’ [ testlist ] ’)’
+    //This function will help us parse that expected syntax flow
+
     // Parses the following grammar rule
     //
     // <print-statement> -> print <ID>
@@ -297,11 +306,31 @@ PrintStatement* Parser::printStatement()
     if (!ourPrintKeyword.isKeyword() && !(ourPrintKeyword.getName() == "print"))
         die("Parser::printStatement()", "Expected a \"print\" keyword here , instead got", ourPrintKeyword);
 
+    //CODY PHASE 2 MAY 7th 2023: Due to our updated grammar rules, after our print keyword we should now expect an open parenthesis right after. Lets get the next token.
+    Token ourExpectedOpeningParenthesis = tokenizer.getToken();
+    //CODY PHASE 2 MAY 7th 2023: After we get our next token, we should check to see if we did indeed get an opening parenthesis
+    if (!ourExpectedOpeningParenthesis.isOpenParen())
+        die("Parser::printStatement()", "Expected a \"(\" here , instead got", ourExpectedOpeningParenthesis);
+
+
     //Next we want to declare an expression node that will drill down and identify the term we want to print after the print keyword we've received
     //We will want to start from the top even though in phase 1 we could assume it will be what the primary() function would solve for us, however this could give us some issues:
     //It is better coding practice to let the program be as generic as possible (and thus will be more flexible for other use cases) and let the code solve the problem/do the work for us. Eventually it will drill down to primary and resolve the variable names and corresponding values when it reaches primary() down the call stack
     //In conversation with Joe, there was a good explanation in that, "if you used primary() to drill down, you would be assuming that the user is exclusively passing you a literal number or a variable with no modification. This fails to account for other valid print expressions involving any operator, such as a + 1, 2 < 3, or a + b + c. You don't need to think to much about what you choose to drill down with in the parser: the answer is always to start from the top of your "drilling" methods." My response was, "So better to start from the top and be safer rather than sorry. I think I get it. It doesn't hurt to drill down rather thank skipping steps/checks which come with starting at the top". And he responded, " Otherwise you open yourself to missing text which is valid. Its necessary to check every condition to perform the fundamental function of the program"
     ExprNode* variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
+
+    //CODY PHASE 2 MAY 7th 2023: After we have parsed all possible expressions within our print statement (i.e. variable names that need to be evaluated and printed, string literals, and commas that need to output blank space), the last token we should expect in a print statement is a closing parenthesis
+    Token ourExpectedClosingParenthesis = tokenizer.getToken();
+
+    //Probably not how we want to handle print statements (as we keep overwriting the same variable)
+    while (ourExpectedClosingParenthesis.isComma())
+    {
+        ExprNode* variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
+        ourExpectedClosingParenthesis = tokenizer.getToken();
+    }
+    //CODY PHASE 2 MAY 7th 2023: After we get this expected closing parenthesis token, we should analyze it to make sure it is indeed a closing parenthesis
+    if (!ourExpectedClosingParenthesis.isCloseParen())
+        die("Parser::printStatement()", "Expected a \")\" here , instead got", ourExpectedClosingParenthesis);
 
     //Return a new printStatement instance who has all the correct parts since we have gotten through all of our parsing for a printStatement
     return new PrintStatement(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
