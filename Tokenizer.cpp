@@ -70,12 +70,56 @@ Token Tokenizer::getToken() {
         token.eof() = true;
     } else if( c == '\n' ) {  // will not ever be the case unless new-line characters are not supressed in line 58 (isspace() would have taken in new line characters as well).
         token.eol() = true;
-    } else if( isdigit(c) ) { // a integer?
+    } else if( isdigit(c) )
+    {
+        //CODY MAY 8th 2023 I'm adding my own code to handle integers and doubles using string conversion
+        // a integer?
         // put the digit back into the input stream so
         // we read the entire number in a function
-        inStream.putback(c);
-        token.setWholeNumber( readInteger() );
+        //inStream.putback(c);
+        //token.setWholeNumber( readInteger() );
+        ///////////////////////////
 
+        //Lets make a little temporary bool flag for if we've seen a decimal point or not
+        bool flagForIfWeveSeenADecimalPointOrNot = false;
+
+        //Lets make a temporary string we can use to build out our integer/double character by character
+        std::string myTemporaryStringToHoldDoubleOrInteger;
+
+        //While our character we have is a digit or a '.' character, we need to build out our string
+        while (isdigit(c) || c == '.')
+        {
+            //Add the number to our string
+            myTemporaryStringToHoldDoubleOrInteger = myTemporaryStringToHoldDoubleOrInteger + c;
+            //If we've seen a decimal point, we need to set our bool flag to true to let us know we have a double we will need to put into our token (other if not, we will just set our integer private member variable for this token)
+            if (c == '.')
+            {
+                flagForIfWeveSeenADecimalPointOrNot = true;
+            }
+            //Get the next token
+            inStream.get(c);
+        }
+        //If we've broken out of this while loop we know we have either seen something that isn't a number or decimal point
+        //We will need to put this character back into the input stream so we can try to tokenize it as well
+        inStream.putback(c);
+
+        //If our bool flag for seeing a decimal is true, we know we have a double to set for this token
+        if (flagForIfWeveSeenADecimalPointOrNot == true)
+        {
+            //We will need to convert this string into a double. We can do this using the standard template libary function .stod(), i.e. std::stod()
+            double theStringIAmConvertingToADouble = std::stod(myTemporaryStringToHoldDoubleOrInteger);
+            //Set this token's private member variable that holds the double value to the string we have just converted into a double
+            token.setDoubleNumber(theStringIAmConvertingToADouble);
+            //And mark the double flag as true
+            token.setDoubleBoolValue(true);
+        }
+        else //we know we have an integer if we haven't seen a decimal point as we accumulated the numbers into the string, convert the string into a integer and set the token's private member variables accordingly
+        {
+            //We will need to convert this string into an integer. We can do this using the standard template libary function .stoi(), i.e. std::stoi()
+            int theStringIAmConvertingToAnInteger = std::stoi(myTemporaryStringToHoldDoubleOrInteger);
+            //Set this token's private member variable that holds the integer value to the string we have just converted into a double and mark the double flag as true. Kooshesh is able to do this in one shot with his function he wrote out.
+            token.setWholeNumber(theStringIAmConvertingToAnInteger);
+        }
     }
     //STEP 2 HERE: Adding the additional code to handle a 2nd equal sign
     else if( c == '=' )
@@ -113,9 +157,44 @@ Token Tokenizer::getToken() {
     }
 
 
-    else if( c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
+    else if( c == '+' || c == '-' || c == '*' || c == '%')
         token.symbol(c);
-    //Phase 2 part 6 here, May 6th 2023 added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
+    else if(c == '/')
+    {
+        //for python we will have the case of reading a '/' character as regular division, which may return back a floating point number (decimal format)
+        //Or we may read in a 2nd character of '/' for a total of '//', which in python signifies integer divison, i.e. the division operation will return back a whole number (rounded down to the nearest whole number)
+        //If we have seen at least one '/' we've entered this if block, so we need to set the _symbol private member variable of our token to it. Use our symbol() function to do that
+        token.symbol(c);
+
+        //In order to get ready for a 2nd '/' to be seen, we will need to build out a temporary string that can hold both characters of '//'
+        std::string temporaryStringToHoldPythonIntegerDivisionOperator;
+
+        //Lets add our first character to it just in case
+        temporaryStringToHoldPythonIntegerDivisionOperator = temporaryStringToHoldPythonIntegerDivisionOperator + c;
+
+        //We can overwrite our last character we got
+        inStream.get(c);
+
+        //Now lets check if that 2nd character is indeed another '/' character
+        if (c == '/')
+        {
+            //add it to our string since we got inside this if condition as the character indeed being another '/'
+            temporaryStringToHoldPythonIntegerDivisionOperator = temporaryStringToHoldPythonIntegerDivisionOperator + c;
+            //Next set our private member variable to actually hold the "//" string
+            token.setPythonIntegerDivisionStringValueForPrivateVariable(temporaryStringToHoldPythonIntegerDivisionOperator);
+            //Then set our flag for this token to signal that it indeed contains a Python integer division operator
+            token.isPythonIntegerDivisionSymbolBoolValueSetter(true);
+            //Since we know we do not have only one '/' symbol, we need reset our _symbol private member variable back to it's default/initialized value. This token does not represent decimal capable divison, but integer divison, so we need to make sure this token symbolizes that.
+            token.symbol('\0');
+
+        }
+        else //We saw an unrecognized character that does not fit the bill for our python operator "//", we need to put the character back into the input stream.
+        {
+            inStream.putback(c);
+            //Note how we do not need to reset the _symbol private member variable since we already tokenized the first '/' we encountered when coming into the first if block
+        }
+    }
+        //Phase 2 part 6 here, May 6th 2023 added some more characters we read in the input stream that need to be picked up as tokens. Adding token functions inside the Token.cpp file to identify these as well.
     else if( c == ';' || c == '.' || c == ',')
         token.symbol(c);
     else if( c == '(' || c == ')' || c == '{' || c == '}')

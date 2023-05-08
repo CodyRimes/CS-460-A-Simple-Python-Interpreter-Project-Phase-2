@@ -51,6 +51,10 @@ TypeDescriptor* InfixExprNode::evaluate(SymTab &symTab) {
         return *lValue == rValue;
     else if (token().isNotEqualOperator())
         return *lValue != rValue;
+    else if (token().isPythonIntegerDivisionSymbol())
+    {
+        return *lValue / rValue;
+    }
     else {
         std::cout << "InfixExprNode::evaluate: don't know how to evaluate this operator\n";
         token().print();

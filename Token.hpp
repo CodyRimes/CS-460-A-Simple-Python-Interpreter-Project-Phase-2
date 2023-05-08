@@ -25,6 +25,9 @@ public:
     bool isString() const {return _isStringBoolValue;}
     void isStringSetter(bool doWeHaveAStringBoolValue) {_isStringBoolValue = doWeHaveAStringBoolValue;}
 
+    bool isPythonIntegerDivisionSymbol() const {return _isPythonIntegerDivisionSymbol;}
+    void isPythonIntegerDivisionSymbolBoolValueSetter(bool boolValueForIfWeHaveAPythonIntegerDivisionSymbolOrNot){_isPythonIntegerDivisionSymbol = boolValueForIfWeHaveAPythonIntegerDivisionSymbolOrNot;}
+
     bool isOpenParen() const  { return _symbol == '('; }
     bool isCloseParen() const { return _symbol == ')'; }
 
@@ -72,6 +75,9 @@ public:
     std::string getStringFromGenericStringHolder() const { return _genericStringHolder; }
     void setStringFromGenericStringHolder(std::string incomingString) { _genericStringHolder = incomingString;}
 
+    std::string getPythonIntegerDivisionStringValueFromPrivateVariable() const {return _stringForPythonIntegerDivisionSymbol;}
+    void setPythonIntegerDivisionStringValueForPrivateVariable(std::string shouldBePythonIntegerDivisionSymbol) {_stringForPythonIntegerDivisionSymbol = shouldBePythonIntegerDivisionSymbol;}
+
 
     bool &isWholeNumber() { return _isWholeNumber; }
     bool isWholeNumber() const { return _isWholeNumber; }
@@ -80,6 +86,11 @@ public:
         _wholeNumber = n;
         isWholeNumber() = true;
     }
+    //Cody May 8th 2023: Adding functionality so a token can hold and recognize it's holding a double
+    void setDoubleNumber(double doubleNumberWeNeedToSetOurPrivateMemberDoubleVariableTo){ _ourActualDoubleNumber = doubleNumberWeNeedToSetOurPrivateMemberDoubleVariableTo; }
+    double getDoubleNumber() { return _ourActualDoubleNumber; }
+    bool isItADouble() { return _isDouble; }
+    void setDoubleBoolValue(bool boolValueWeWantToSetOurIsDoublePrivateMemberVariableTo) { _isDouble = boolValueWeWantToSetOurIsDoublePrivateMemberVariableTo; }
     // STEP 2
     //Cody: Returns true if one of the bools within the function return true
     bool isRelationalOperator() const {
@@ -123,11 +134,15 @@ private:
     std::string _name;
     std::string _stringforrationaloperator;
     std::string _genericStringHolder;
+    std::string _stringForPythonIntegerDivisionSymbol;
     bool _eof, _eol;
     bool _isWholeNumber;
     char _symbol;
     int _wholeNumber;
+    double _ourActualDoubleNumber;
+    bool _isDouble;
     bool _isStringBoolValue;
+    bool _isPythonIntegerDivisionSymbol;
 };
 
 

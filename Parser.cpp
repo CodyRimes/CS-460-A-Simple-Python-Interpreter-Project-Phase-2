@@ -486,7 +486,8 @@ ExprNode* Parser::term() {
     ExprNode* left = primary();
     Token tok = tokenizer.getToken();
 
-    while (tok.isMultiplicationOperator() || tok.isDivisionOperator() || tok.isModuloOperator() || tok.isLessThanOrEqualToOperator() || tok.isLessThanOperator() || tok.isGreaterThanOrEqualToOperator() || tok.isGreaterThanOperator()) {
+    //Cody May 7th 2023: Added integer division functionality to this section of code
+    while (tok.isMultiplicationOperator() || tok.isDivisionOperator() || tok.isModuloOperator() || tok.isLessThanOrEqualToOperator() || tok.isLessThanOperator() || tok.isGreaterThanOrEqualToOperator() || tok.isGreaterThanOperator() || tok.isPythonIntegerDivisionSymbol()) {
         InfixExprNode* p = new InfixExprNode(tok);
         p->left() = left;
         p->right() = primary();

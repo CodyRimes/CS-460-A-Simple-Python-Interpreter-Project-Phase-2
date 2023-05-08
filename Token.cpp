@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Token.hpp"
 
-Token::Token(): _name{""}, _eof{false}, _eol{false}, _symbol{'\0'}, _isWholeNumber{false}, _isStringBoolValue{false} {}
+Token::Token(): _name{""}, _eof{false}, _eol{false}, _symbol{'\0'}, _isWholeNumber{false}, _isStringBoolValue{false}, _stringForPythonIntegerDivisionSymbol{""}, _isPythonIntegerDivisionSymbol{false} {}
 
 void Token::print() const {
     if( eol() ) std::cout << "EOL\n" ;
@@ -34,10 +34,12 @@ void Token::print() const {
     else if( isClosingCurlyBrace() ) std::cout << "}";
     else if( isString() ) std::cout << getStringFromGenericStringHolder();
     else if( isComma() ) std::cout << ",";
+    else if( isPythonIntegerDivisionSymbol() ) std::cout << "//";
     //Could we do this?:
     //else if(isRelationalOperator() ) std::cout << getStringForRelationalOperator();
 
     //Cody: Adam added isKeyword
     else if( isKeyword()) std::cout << getName();
+    else if( isItADouble() ) std::cout << getDoubleNumber();
     else std::cout << "Uninitialized token.\n";
 }

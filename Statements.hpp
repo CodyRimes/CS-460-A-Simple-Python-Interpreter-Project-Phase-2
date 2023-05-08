@@ -89,7 +89,7 @@ public:
     ExprNode* _rhsExpressionGetter();
 
     //We will need below code for phase 2
-    //std::vector<ExprNode*>& rhsExpression();
+    std::vector<ExprNode*>& rhsExpression();
 
     virtual void print();
     virtual void evaluate(SymTab& symTab);
@@ -100,7 +100,7 @@ private:
     ExprNode* _rhsExpression;
 
     //May need below code for phase 2
-    //std::vector<ExprNode*> _rhsExpressions;
+    std::vector<ExprNode*> _rhsExpressions;
 };
 
 
@@ -193,6 +193,7 @@ private:
     AssignmentStatement* _updateToInitialAssignmentExpression;
     Statements* _bodyOfForLoop;
 };
+
 
 
 
