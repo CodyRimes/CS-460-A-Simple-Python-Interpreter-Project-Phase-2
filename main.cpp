@@ -67,10 +67,14 @@ int main(int argc, char *argv[]) {
     }
 
 
+    std::cout << "Here is a list of all tokens tokenized by our tokenizer:" << std::endl;
+    tokenizer.printProcessedTokens();
 
     SymTab symTab;
 
+    std::cout << "Here is a list of all statements we can print from our statements class: " << std::endl;
     statements->print();
+    std::cout << "Here we are trying to evaluate all those statements" << std::endl;
     statements->evaluate(symTab);
     std::cout << std::endl << "Symbol table contains the following variables.\n";
     symTab.print();

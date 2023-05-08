@@ -88,8 +88,8 @@ public:
     }
     //Cody May 8th 2023: Adding functionality so a token can hold and recognize it's holding a double
     void setDoubleNumber(double doubleNumberWeNeedToSetOurPrivateMemberDoubleVariableTo){ _ourActualDoubleNumber = doubleNumberWeNeedToSetOurPrivateMemberDoubleVariableTo; }
-    double getDoubleNumber() { return _ourActualDoubleNumber; }
-    bool isItADouble() { return _isDouble; }
+    double getDoubleNumber() const { return _ourActualDoubleNumber; }
+    bool isItADouble() const { return _isDouble; }
     void setDoubleBoolValue(bool boolValueWeWantToSetOurIsDoublePrivateMemberVariableTo) { _isDouble = boolValueWeWantToSetOurIsDoublePrivateMemberVariableTo; }
     // STEP 2
     //Cody: Returns true if one of the bools within the function return true

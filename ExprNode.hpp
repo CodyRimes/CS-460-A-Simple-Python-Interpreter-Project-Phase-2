@@ -65,6 +65,14 @@ public:
     TypeDescriptor* evaluate(SymTab &symTab) override;
 };
 
+//Cody May 8th 2023 Added a ExprNode class type to handle tokens that contain double data types
+class DoubleNumber: public ExprNode {
+public:
+    explicit DoubleNumber(Token token);
+    void print() override;
+    TypeDescriptor* evaluate(SymTab &symTab) override;
+};
+
 // Variable is a leaf-node in an expression tree. It corresponds to
 // a terminal in the production rules of the grammar that describes the
 // syntax of arithmetic expressions.

@@ -319,13 +319,36 @@ PrintStatement* Parser::printStatement()
     //In conversation with Joe, there was a good explanation in that, "if you used primary() to drill down, you would be assuming that the user is exclusively passing you a literal number or a variable with no modification. This fails to account for other valid print expressions involving any operator, such as a + 1, 2 < 3, or a + b + c. You don't need to think to much about what you choose to drill down with in the parser: the answer is always to start from the top of your "drilling" methods." My response was, "So better to start from the top and be safer rather than sorry. I think I get it. It doesn't hurt to drill down rather thank skipping steps/checks which come with starting at the top". And he responded, " Otherwise you open yourself to missing text which is valid. Its necessary to check every condition to perform the fundamental function of the program"
     ExprNode* variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
 
+    //We will need a vector of relational expressions to send back to our parsed PrintStatement we will returning after this parser function is done running
+    std::vector<ExprNode*> ourVectorToHoldRelationalExpressions;
+
+    //Our first relational expression that comes back needs to be captured/put back in our vector of relational expressions
+    ourVectorToHoldRelationalExpressions.push_back(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
+
     //CODY PHASE 2 MAY 7th 2023: After we have parsed all possible expressions within our print statement (i.e. variable names that need to be evaluated and printed, string literals, and commas that need to output blank space), the last token we should expect in a print statement is a closing parenthesis
     Token ourExpectedClosingParenthesis = tokenizer.getToken();
+
+
+    //Cody May 8th 2023: I am going to try and build a "test list" class (as we would probably expect with our new grammar rules)
+    //Basically our print statement contains at least one relational expression, with zero or more able to come after that when following a comma
+    //The grammar rule for a test-list is as follows:
+    // testlist -> test {’,’ test}*
+    //With that being in mind, a parsed PrintStatement should contain a testlist that we will pass back to the constructor after we've finished parsing
+    //A test list class should contain everything necessary that a test list should contain by grammar rule, that being at least one relational expression, if not more, if it encounters a comma after the relational expression
+    //Since we need to check if there is a comma, not only will test list be a class containing a vector of relational expressions, but it will need a parsing function out here in parser as well
+    //Thus the PrintStatement class will now contain a test list
+    //testlist will be a class that contains one or more relational expressions in a vector it contains.
+    //It should have the capability of printing that vector and evaluating it
+    //Test list will also be a parser function that needs to make sure relational expressions are following the correct syntax after a comma is seen
 
     //Probably not how we want to handle print statements (as we keep overwriting the same variable)
     while (ourExpectedClosingParenthesis.isComma())
     {
-        ExprNode* variableWhosValueIsContainedInSymbolTableWeWillWantToPrint = relationalExpression();
+        //Get another relational expression
+        ExprNode* nextRelationalExpressionToCapture = relationalExpression();
+        //Pus back that relational expression into our vector
+        ourVectorToHoldRelationalExpressions.push_back(nextRelationalExpressionToCapture)
+        //Get the next token. If it is a closing parenthesis we break out of this while loop. If it is a comma we keep looping and adding relational expressions to our vector.
         ourExpectedClosingParenthesis = tokenizer.getToken();
     }
     //CODY PHASE 2 MAY 7th 2023: After we get this expected closing parenthesis token, we should analyze it to make sure it is indeed a closing parenthesis
@@ -333,7 +356,8 @@ PrintStatement* Parser::printStatement()
         die("Parser::printStatement()", "Expected a \")\" here , instead got", ourExpectedClosingParenthesis);
 
     //Return a new printStatement instance who has all the correct parts since we have gotten through all of our parsing for a printStatement
-    return new PrintStatement(variableWhosValueIsContainedInSymbolTableWeWillWantToPrint);
+    //Cody May 8th 2023, now our print statement will not only be taking in one relational expression, but multiple, so we will hand back our vector we just made to our parsed PrintStatement's constructor
+    return new PrintStatement(ourVectorToHoldRelationalExpressions);
 
 }
 
@@ -516,6 +540,9 @@ ExprNode* Parser::primary() {
     else if (tok.isString())
         //Cody May 7th 2023: Phase 2 Step 4 Adding another ExprNode class to handle string literals here (see ExprNode.cpp)
         return new String(tok);
+    else if (tok.isItADouble())
+        //Cody May 8th 2023: Phase 2, Adding another ExprNode class to handle doubles (see ExprNode.cpp)
+        return new DoubleNumber(tok);
     else if (tok.isOpenParen()) {
         ExprNode* p = relationalExpression();
         Token token = tokenizer.getToken();

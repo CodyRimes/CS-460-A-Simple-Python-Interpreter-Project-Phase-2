@@ -10,6 +10,7 @@
 
 #include "ExprNode.hpp"
 #include "SymTab.hpp"
+#include "Parser.cpp"
 
 // The Statement (abstract) class serves as a super class for all statements that
 // are defined in the language. Ultimately, statements have to be evaluated.
@@ -89,7 +90,7 @@ public:
     ExprNode* _rhsExpressionGetter();
 
     //We will need below code for phase 2
-    std::vector<ExprNode*>& rhsExpression();
+    std::vector<ExprNode*> &rhsExpression();
 
     virtual void print();
     virtual void evaluate(SymTab& symTab);
@@ -100,8 +101,9 @@ private:
     ExprNode* _rhsExpression;
 
     //May need below code for phase 2
-    std::vector<ExprNode*> _rhsExpressions;
+    std::vector<ExprNode*> containerForMultipleExpressionNodes;
 };
+
 
 
 //CODY MAY 7th 2023 COMMENTING OUT THIS CODE AS IT IS NOT NECESSARY:

@@ -69,7 +69,7 @@ void InfixExprNode::print() {
     _right->print();
 }
 
-// WHoleNumber
+// WholeNumber
 WholeNumber::WholeNumber(Token token): ExprNode{token} {}
 
 void WholeNumber::print() {
@@ -83,6 +83,23 @@ TypeDescriptor* WholeNumber::evaluate(SymTab &symTab) {
     return new TypeDescriptor(TypeDescriptor::ourCustomEnumDatatype::INTEGER,  token().getWholeNumber());
     //return token().getWholeNumber();
 }
+
+//Cody May 8th 2023: For Phase 2 we will need to have an ExprNode that can handle doubles as well
+//Constructor (This allows our ExprNode to hold a token/data
+DoubleNumber::DoubleNumber(Token token): ExprNode{token} {}
+
+//Print what the token that this type of ExprNode holds
+void DoubleNumber::print() {
+    token().print();
+}
+
+TypeDescriptor* DoubleNumber::evaluate(SymTab &symTab) {
+    if(debug)
+        std::cout << "ExprNode.cpp::DoubleNumber::evaluate: returning " << token().getDoubleNumber() << std::endl;
+    return new TypeDescriptor(TypeDescriptor::ourCustomEnumDatatype::DOUBLE,  token().getDoubleNumber());
+    //return token().getWholeNumber();
+}
+
 
 // Variable
 
