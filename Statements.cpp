@@ -64,11 +64,16 @@ PrintStatement::PrintStatement()
     _rhsExpression = nullptr;
 }
 
+//Cody May 8th 2023 Changing PrintStatement constructor to set our new vector that holds expression nodes now
 //Parameterized constructor for PrintStatement (we use this to correctly set all private member variables after our parsing function has successfully validated we have a print statement/made sure all the correct parts are in order for us to create this "certified" print statement
-PrintStatement::PrintStatement( ExprNode* rhsExprs)
+PrintStatement::PrintStatement( std::vector<ExprNode*> incomingVectorOfExpressionNodes)
 {
+    //Cody May 8th 2023: Commenting out below code since our change
     //_lhsVariable = lhsVar;
-    _rhsExpression = rhsExprs;
+    //_rhsExpression = rhsExprs;
+    _containerForMultipleExpressionNodes = incomingVectorOfExpressionNodes;
+
+
 }
 
 /*
@@ -98,7 +103,11 @@ void PrintStatement::print()
 
     //use the ExprNode's (which is the type our _rhsExpression private member variable is) print function to print out the value that the right hand side expression contains
     std::cout << "print (";
-    _rhsExpression->print();
+    //Cody May 8th 2023 commenting out below code:
+    //_rhsExpression->print();
+
+    for (auto relationalExpression: _containerForMultipleExpressionNodes)
+        relationalExpression->print();
     std::cout << ")" << std::endl;
 
     /* THIS CODE MAY BE NEEDED FOR PHASE 2
@@ -114,8 +123,14 @@ void PrintStatement::print()
 void PrintStatement::evaluate(SymTab &symTab)
 {
 
-    //Use the symbol table we've passed to the
-    std::cout << _rhsExpression->evaluate(symTab) << std::endl;
+    //Use the symbol table we've passed to the function
+    //Cody May 8th 2023: Commenting out below code so we can instead print the whole vector
+    //std::cout << _rhsExpression->evaluate(symTab) << std::endl;
+
+    for (auto relationalExpression: _containerForMultipleExpressionNodes)
+        relationalExpression->evaluate(symTab);
+    std::cout << ")" << std::endl;
+
 
     /* THIS CODE MAY BE NEEDED FOR PHASE 2
     for (auto expr : _rhsExpressions)

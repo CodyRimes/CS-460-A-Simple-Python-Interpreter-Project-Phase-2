@@ -341,7 +341,7 @@ PrintStatement* Parser::printStatement()
     //It should have the capability of printing that vector and evaluating it
     //Test list will also be a parser function that needs to make sure relational expressions are following the correct syntax after a comma is seen
 
-    //Probably not how we want to handle print statements (as we keep overwriting the same variable)
+    //keep overwriting the same variable with new relational expressions so long as we see a comma between them (we store the results in our vector in the while loop anyways)
     while (ourExpectedClosingParenthesis.isComma())
     {
         //Get another relational expression
@@ -351,6 +351,7 @@ PrintStatement* Parser::printStatement()
         //Get the next token. If it is a closing parenthesis we break out of this while loop. If it is a comma we keep looping and adding relational expressions to our vector.
         ourExpectedClosingParenthesis = tokenizer.getToken();
     }
+
     //CODY PHASE 2 MAY 7th 2023: After we get this expected closing parenthesis token, we should analyze it to make sure it is indeed a closing parenthesis
     if (!ourExpectedClosingParenthesis.isCloseParen())
         die("Parser::printStatement()", "Expected a \")\" here , instead got", ourExpectedClosingParenthesis);

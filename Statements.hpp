@@ -77,8 +77,10 @@ public:
     //Default constructor
     PrintStatement();
 
+    //Cody May 8th 2023 Changing PrintStatement constructor to set our new vector that holds expression nodes now
     //Parameterized constructor which will be used by our parser after our parser checks to make sure everything is in the right order and our tokens are the right tokens. This is the print statement we will then use our evaluate() and print() functions on
-    PrintStatement(ExprNode* rhsExprs);
+    //PrintStatement(std::vector<ExprNode*> incomingVectorOfExpressionNodes);
+    PrintStatement(std::vector<ExprNode*> incomingVectorOfExpressionNodes);
 
     //Probably will need this code for phase 2 of the project. Commenting out below code for now - Cody May 1st 2023
     //Parameterized constructor which will be used by our parser after our parser checks to make sure everything is in the right order and our tokens are the right tokens. This is the print statement we will then use our evaluate() and print() functions on
@@ -100,8 +102,8 @@ private:
     //std::string _lhsVariable;
     ExprNode* _rhsExpression;
 
-    //May need below code for phase 2
-    std::vector<ExprNode*> containerForMultipleExpressionNodes;
+    //Cody May 8th 2023: Adding a vector to our print statement class so it can hold multiple relational expressions as we parse them in accordance with the new grammar rules
+    std::vector<ExprNode*> _containerForMultipleExpressionNodes;
 };
 
 
