@@ -347,7 +347,7 @@ PrintStatement* Parser::printStatement()
         //Get another relational expression
         ExprNode* nextRelationalExpressionToCapture = relationalExpression();
         //Pus back that relational expression into our vector
-        ourVectorToHoldRelationalExpressions.push_back(nextRelationalExpressionToCapture)
+        ourVectorToHoldRelationalExpressions.push_back(nextRelationalExpressionToCapture);
         //Get the next token. If it is a closing parenthesis we break out of this while loop. If it is a comma we keep looping and adding relational expressions to our vector.
         ourExpectedClosingParenthesis = tokenizer.getToken();
     }

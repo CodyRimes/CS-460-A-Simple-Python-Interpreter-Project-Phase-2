@@ -10,7 +10,6 @@
 
 #include "ExprNode.hpp"
 #include "SymTab.hpp"
-#include "Parser.cpp"
 
 // The Statement (abstract) class serves as a super class for all statements that
 // are defined in the language. Ultimately, statements have to be evaluated.
