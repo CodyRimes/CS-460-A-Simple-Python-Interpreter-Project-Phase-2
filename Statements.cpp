@@ -284,7 +284,7 @@ void ForStatement::evaluate(SymTab &symTab)
 
     //Following the actual format of a for loop, we need to run the evaluations on the for loop body/execute the statements inside the body while the conditinal expression keeps coming back as true. When the conditional expression finally comes back as false, we will break out of the while loop, just like how we would inside a real for loop
     //Thus while we have our conditional expression coming back as true:
-    while (_conditionalExpressionInForLoop->evaluate(symTab))
+    while (_conditionalExpressionInForLoop->evaluate(symTab)->boolValue())
     {
 
         //Use Statements class evaluate function to evaluate the contents of our private member Statements variable

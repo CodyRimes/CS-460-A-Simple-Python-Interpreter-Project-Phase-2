@@ -59,10 +59,10 @@ public:
     //Functions to get the private member variables/their values
     //Note how we do not need setters as we use our parameterized constructor as a setter
     std::string &lhsVariable();
-    ExprNode *&rhsExpression();
+    ExprNode* &rhsExpression();
 
-    virtual void evaluate(SymTab &symTab);
-    virtual void print();
+     void evaluate(SymTab &symTab) override;
+     void print() override;
 
 private:
     //The left hand side of the assignment statement will be a variable name as we know that is the proper syntax of an assignment statement. Lets create a private string variable called _lhsVariable to capture that. Ex. (sum = 3 + 3) this variable will capture the string "sum" in this example
@@ -93,8 +93,8 @@ public:
     //We will need below code for phase 2
     std::vector<ExprNode*> &rhsExpression();
 
-    virtual void print();
-    virtual void evaluate(SymTab& symTab);
+     void print() override;
+     void evaluate(SymTab& symTab) override;
 
 private:
     //For a print statement we may not need a left hand side variable, we only know we need to print whatever is after a print keyword!
@@ -155,8 +155,8 @@ public:
     AssignmentStatement* getOurUpdateToInitialAssignmentExpression();
     Statements* getOurBodyOfForLoop();
 
-    virtual void evaluate(SymTab &symTab);
-    virtual void print();
+     void evaluate(SymTab &symTab) override;
+     void print() override;
 
 
 

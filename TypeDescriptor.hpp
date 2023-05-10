@@ -24,7 +24,7 @@ public:
     TypeDescriptor(ourCustomEnumDatatype type, double incomingDoubleValue);
     TypeDescriptor(ourCustomEnumDatatype type, bool incomingBoolValue);
     //Getter that returns our private member variable
-    const ourCustomEnumDatatype getOurDataType() const { return _type; }
+    ourCustomEnumDatatype getOurDataType()  { return _type; }
 
     //Getters for our private member variables
     bool boolValue() const; // if our union private member variable is a bool datatype, returns the bool value
@@ -36,19 +36,20 @@ public:
     //Setter
     void setStringValue(std::string value);  // sets our private member variable's string value.
 
+    //CHANGED TO NOT VIRTUAL SINCE WE ARE NO LONGER USING POLYMORPHISM
     //virtual destructor, allows derived classes to define their own implementation of the desctructor if necessary
-    virtual ~TypeDescriptor() {}
+     ~TypeDescriptor() {}
 
-    virtual TypeDescriptor* operator + (TypeDescriptor* secondTypeDescriptorWeWantToAdd);
-    virtual TypeDescriptor* operator - (TypeDescriptor* secondTypeDescriptorWeWantToSubtract);
-    virtual TypeDescriptor* operator * (TypeDescriptor* secondTypeDescriptorWeWantToMultiply);
-    virtual TypeDescriptor* operator / (TypeDescriptor* secondTypeDescriptorWeWantToDivide);
-    virtual TypeDescriptor* operator < (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual TypeDescriptor* operator > (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual TypeDescriptor* operator <= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual TypeDescriptor* operator >= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual TypeDescriptor* operator == (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
-    virtual TypeDescriptor* operator != (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator + (TypeDescriptor* secondTypeDescriptorWeWantToAdd);
+     TypeDescriptor* operator - (TypeDescriptor* secondTypeDescriptorWeWantToSubtract);
+     TypeDescriptor* operator * (TypeDescriptor* secondTypeDescriptorWeWantToMultiply);
+     TypeDescriptor* operator / (TypeDescriptor* secondTypeDescriptorWeWantToDivide);
+     TypeDescriptor* operator < (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator > (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator <= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator >= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator == (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     TypeDescriptor* operator != (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
 
 
 

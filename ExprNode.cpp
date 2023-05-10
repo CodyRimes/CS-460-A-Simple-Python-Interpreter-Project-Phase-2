@@ -80,7 +80,7 @@ void WholeNumber::print() {
 TypeDescriptor* WholeNumber::evaluate(SymTab &symTab) {
     if(debug)
         std::cout << "WholeNumber::evaluate: returning " << token().getWholeNumber() << std::endl;
-    return new TypeDescriptor(TypeDescriptor::ourCustomEnumDatatype::INTEGER,  token().getWholeNumber());
+    return new TypeDescriptor(TypeDescriptor::INTEGER,  token().getWholeNumber());
     //return token().getWholeNumber();
 }
 
