@@ -37,7 +37,7 @@ TypeDescriptor* InfixExprNode::evaluate(SymTab &symTab) {
     else if (token().isDivisionOperator())
         return *lValue / rValue; // division by zero?
     else if (token().isModuloOperator())
-        ;//return *lValue % rValue;
+        return *lValue % rValue;
     //Cody: Looks like Adam completed part of Step 4 here and added this functionality to the expression node class function
     else if (token().isLessThanOperator())
         return *lValue < rValue;
@@ -121,21 +121,26 @@ TypeDescriptor* Variable::evaluate(SymTab &symTab) {
 }
 
 //Cody May 7th 2023 Phase 2 Step 4 had to add a new ExprNode sub-class that can handle string literals
-String::String(Token token) : ExprNode{token} {}
+StringLiteral::StringLiteral(Token token) : ExprNode{token} {}
 
-void String::print() {
+void StringLiteral::print() {
     token().print();
 }
 
 //Phase 2 step 4 changed this to return type descriptors now
-TypeDescriptor* String::evaluate(SymTab &symTab) {
-    if( ! symTab.isDefined(token().getName())) {
-        std::cout << "Use of undefined variable, " << token().getName() << std::endl;
-        exit(1);
-    }
+//Cody May 11th 2023: If you think about it when we call our evaluate function on our statements class (which will eventually call all evaluate methods on the substructures that make up that class, including this one)
+//When we get to a ExpressionNode that contains a string (i.e. our String sub-class of ExprNode that extends ExprNode class to handle strings) and we want to evaluate it
+//Such as in a statement such as: VariableToConcatenateTwoStringsTogether = "Hello" + "World"
+//When we get down in our ExprNode tree of just the two string literals, when we "evaluate" them to return them up to the calling function (i.e. going back up our tree)
+//We will just want to return the string literal as our evaluation when we get this low in the program, that way the ExprNode above us (in this case can add the two string literals together) can do whatever operation it contains on String ExprNode sub-class it gets back
+//Thus there is no need for a look up in the Symbol Table or operation on it, like how we would do if we had a Variable ExprNode sub-class type that contained a variable which would need it's value/datatype looked up in the SymbolTable
+//String literals do not need to go into the SymbolTable or modify it as they are not variables that contain a value/need to be looked up for. String literals are string literals and that's what they return
+//Note how we pass in the &symTab parameter here but never use it within the function. That is to follow the virtual function declared in our parent class ExprNode which must have a match with the function declaration
+TypeDescriptor* StringLiteral::evaluate(SymTab &symTab) {
+
     if(debug)
-        std::cout << "Variable::evaluate: returning " << symTab.getValueFor(token().getName()) << std::endl;
-    return symTab.getValueFor(token().getName());
+        std::cout << "StringLiteral::evaluate: returning " << token().getStringFromGenericStringHolder() << std::endl;
+    return new TypeDescriptor(TypeDescriptor::ourCustomEnumDatatype::STRING, token().getStringFromGenericStringHolder());;
 }
 
 

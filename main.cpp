@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
 
     std::cout << "Here is a list of all statements we can print from our statements class: " << std::endl;
     statements->print();
-    std::cout << "Here we are trying to evaluate all those statements" << std::endl;
+    std::cout << "Here we are evaluating all those statements. Nothing should be printed here. Running statements->evaluate() will add everything to our SymbolTable we declared above: " << std::endl;
     statements->evaluate(symTab);
     std::cout << std::endl << "Symbol table contains the following variables.\n";
     symTab.print();

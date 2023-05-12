@@ -245,6 +245,44 @@ TypeDescriptor* TypeDescriptor::operator / ( TypeDescriptor* other)
 
 }
 
+TypeDescriptor* TypeDescriptor::operator % ( TypeDescriptor* other)
+{
+    //we need to account for when two NumbericTypeDescriptors are either:
+
+
+    //This is a double, the incoming one is an integer
+    if ((this->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::DOUBLE) && (other->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::INTEGER))
+    {
+        return new TypeDescriptor(TypeDescriptor::DOUBLE, static_cast<int>(this->doubleValue()) % other->intValue());
+    }
+
+        //This is an integer, the incoming one is a double
+    else if ((this->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::INTEGER) && (other->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::DOUBLE))
+    {
+        return new TypeDescriptor(TypeDescriptor::DOUBLE, this->intValue() % static_cast<int>(other->doubleValue()));
+    }
+
+        //Both are a double
+    else if ((this->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::DOUBLE) && (other->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::DOUBLE))
+    {
+        return new TypeDescriptor(TypeDescriptor::DOUBLE, static_cast<int>(this->doubleValue()) %  static_cast<int>(other->doubleValue()));
+    }
+
+        //Both are an integer
+    else if ((this->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::INTEGER) && (other->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::INTEGER))
+    {
+        return new TypeDescriptor(TypeDescriptor::INTEGER, this->intValue() % other->intValue());
+    }
+
+    else//Lets give the user an error message if something unexpected happens
+    {
+        return new TypeDescriptor(TypeDescriptor::ourCustomEnumDatatype::BOGUS);
+        std::cout <<"Operation overload / between two NumericTypeDescriptors seems to have failed. Do you have the right data types?" << std::endl;
+    }
+
+
+}
+
 TypeDescriptor* TypeDescriptor::operator < ( TypeDescriptor* other)
 {
     //we need to account for when two NumbericTypeDescriptors are either:
@@ -491,6 +529,38 @@ TypeDescriptor* TypeDescriptor::operator != ( TypeDescriptor* other)
 
 }
 
+//Allows us to actually print what a TypeDescriptor pointer, when de-referenced, contains:
+std::ostream& operator << (std::ostream& ourOutputStreamWeTakeInToModify, TypeDescriptor* ourTypeDescriptorWeWantToPrintToScreen)
+{
+
+    if (ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::DOUBLE)
+    {
+        //std::cout <<"They TypeDescriptor pointer we are trying to dereference and print is a DOUBLE type as seen here: " << ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() << " and it's value it contains is: " << ourTypeDescriptorWeWantToPrintToScreen->doubleValue() << std::endl;
+        std::cout << "  Datatype: Double; " <<  ourTypeDescriptorWeWantToPrintToScreen->doubleValue();
+    }
+    else if (ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::INTEGER)
+    {
+        //std::cout <<"They TypeDescriptor pointer we are trying to dereference and print is a INTEGER type as seen here: " << ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() << " and it's value it contains is: " << ourTypeDescriptorWeWantToPrintToScreen->intValue() << std::endl;
+        std::cout << " Datatype: Integer; " <<  ourTypeDescriptorWeWantToPrintToScreen->intValue();
+    }
+    else if (ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::BOOL)
+    {
+        //std::cout <<"They TypeDescriptor pointer we are trying to dereference and print is a BOOL type as seen here: " << ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() << " and it's value it contains is: " << ourTypeDescriptorWeWantToPrintToScreen->boolValue() << std::endl;
+        std::cout << " Datatype: Bool; " <<  ourTypeDescriptorWeWantToPrintToScreen->boolValue();
+    }
+    else if (ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() == TypeDescriptor::ourCustomEnumDatatype::STRING)
+    {
+        //std::cout <<"They TypeDescriptor pointer we are trying to dereference and print is a STRING type as seen here: " << ourTypeDescriptorWeWantToPrintToScreen->getOurDataType() << " and it's value it contains is: " << ourTypeDescriptorWeWantToPrintToScreen->getStringValue() << std::endl;
+        std::cout <<  " Datatype: String; " <<  ourTypeDescriptorWeWantToPrintToScreen->getStringValue();
+    }
+    else //We have run into an unknown case
+    {
+        std::cout << "Something wrong has happened when trying to output this TypeDescriptor. You are a failure" << std::endl;
+    }
+
+    //Now we have modified what we've wanted to do with our TypeDescriptor when it comes to outputting one, we can return the outputStream we've taken in by reference and return the "modified" version
+    return ourOutputStreamWeTakeInToModify;
+}
 
 
 

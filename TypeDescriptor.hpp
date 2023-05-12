@@ -44,12 +44,17 @@ public:
      TypeDescriptor* operator - (TypeDescriptor* secondTypeDescriptorWeWantToSubtract);
      TypeDescriptor* operator * (TypeDescriptor* secondTypeDescriptorWeWantToMultiply);
      TypeDescriptor* operator / (TypeDescriptor* secondTypeDescriptorWeWantToDivide);
+     TypeDescriptor* operator % (TypeDescriptor* secondTypeDescriptorWeWantToModulus );
      TypeDescriptor* operator < (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
      TypeDescriptor* operator > (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
      TypeDescriptor* operator <= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
      TypeDescriptor* operator >= (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
      TypeDescriptor* operator == (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
      TypeDescriptor* operator != (TypeDescriptor* secondTypeDescriptorWeWantToCompareAgainst);
+     //I would brush up as to why the friend keyword is needed here
+     //Remember, the "friend" keyword declares a function as a non-member of the class, which means technically this function could have been delcared outside of the class scope
+     //Also, the "friend" keyword keys the said non-class member function access to the class private and protected member variables
+     friend std::ostream& operator << (std::ostream& ourOutputStreamWeTakeInToModify, TypeDescriptor* ourTypeDescriptorWeWantToPrintToScreen);
 
 
 

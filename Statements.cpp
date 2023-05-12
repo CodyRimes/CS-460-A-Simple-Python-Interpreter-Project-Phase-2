@@ -107,7 +107,10 @@ void PrintStatement::print()
     //_rhsExpression->print();
 
     for (auto relationalExpression: _containerForMultipleExpressionNodes)
+    {
         relationalExpression->print();
+        std::cout << ", " ;
+    }
     std::cout << ")" << std::endl;
 
     /* THIS CODE MAY BE NEEDED FOR PHASE 2
@@ -129,7 +132,6 @@ void PrintStatement::evaluate(SymTab &symTab)
 
     for (auto relationalExpression: _containerForMultipleExpressionNodes)
         relationalExpression->evaluate(symTab);
-    std::cout << ")" << std::endl;
 
 
     /* THIS CODE MAY BE NEEDED FOR PHASE 2

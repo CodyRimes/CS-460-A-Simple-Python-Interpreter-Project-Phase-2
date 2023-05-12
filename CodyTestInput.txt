@@ -1,0 +1,4 @@
+j = 5 + 5
+i = 10 + 10
+result = j + i
+print(result)

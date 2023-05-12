@@ -85,10 +85,10 @@ public:
     TypeDescriptor* evaluate(SymTab &symTab) override;
 };
 
-class String: public ExprNode
+class StringLiteral: public ExprNode
 {
 public:
-    explicit String(Token token);
+    explicit StringLiteral(Token token);
     void print() override;
     TypeDescriptor* evaluate(SymTab &symTab) override;
 };

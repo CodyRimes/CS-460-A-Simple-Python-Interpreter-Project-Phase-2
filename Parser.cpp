@@ -540,7 +540,7 @@ ExprNode* Parser::primary() {
         return new Variable(tok);
     else if (tok.isString())
         //Cody May 7th 2023: Phase 2 Step 4 Adding another ExprNode class to handle string literals here (see ExprNode.cpp)
-        return new String(tok);
+        return new StringLiteral(tok);
     else if (tok.isItADouble())
         //Cody May 8th 2023: Phase 2, Adding another ExprNode class to handle doubles (see ExprNode.cpp)
         return new DoubleNumber(tok);
