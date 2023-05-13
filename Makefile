@@ -12,7 +12,8 @@ statement.x: $(objects)
 
 Token.o:  Token.cpp Token.hpp
 Tokenizer.o: Tokenizer.cpp Tokenizer.hpp
-ArithExpr.o: ExprNode.cpp ExprNode.hpp Token.hpp SymTab.hpp
+ExprNode.o: ExprNode.cpp ExprNode.hpp Token.hpp SymTab.hpp
+TypeDescriptor.o: TypeDescriptor.cpp TypeDescriptor.hpp
 SymTab.o: SymTab.cpp SymTab.hpp
 Parser.o: Parser.cpp Token.hpp Parser.hpp Tokenizer.hpp SymTab.hpp ExprNode.hpp Statements.hpp
 Statements.o: Statements.cpp Statements.hpp ExprNode.hpp Token.hpp SymTab.hpp
