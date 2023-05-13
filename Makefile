@@ -1,7 +1,7 @@
 .SUFFIXES: .o .cpp .x
 
 CFLAGS = -ggdb -std=c++17
-objects =  Token.o Tokenizer.o Parser.o ArithExpr.o SymTab.o Statements.o main.o
+objects =  Token.o Tokenizer.o Parser.o ExprNode.o SymTab.o Statements.o main.o TypeDescriptor.o git
 
 statement.x: $(objects)
 	g++ $(CFLAGS) -o statement.x $(objects)
@@ -21,3 +21,5 @@ main.o: main.cpp Token.hpp Tokenizer.hpp Parser.hpp SymTab.hpp ExprNode.hpp Stat
 
 clean:
 	rm -fr *.o *~ *.x
+
+#To run the code please use the command ./statements.x sampleInput.txt
